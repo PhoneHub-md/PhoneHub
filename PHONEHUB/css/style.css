@@ -1,11 +1,11 @@
 a:link, a:visited, a:active {
-    text-decoration:none;
-    
+    text-decoration:none; 
 }
 
 .info{
     background-color: burlywood;
 }
+
 
 .shadow{
     text-shadow: black 0.1em 0.1em 0.4em;
@@ -39,6 +39,8 @@ a:link, a:visited, a:active {
 
 nav{
     background-color: BLACK;
+    z-index: 9999;
+    
 }
 
 .fixed-right-bottom {
@@ -48,7 +50,13 @@ nav{
     margin: 20px;
     z-index: 9999;
 }
+.nav{
+    color: light;
+}
 
+.hover_nav{
+    color: burlywood;
+}
 
 
 
