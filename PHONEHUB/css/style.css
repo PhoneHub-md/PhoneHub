@@ -1,5 +1,6 @@
 a:link, a:visited, a:active {
-    text-decoration:none; 
+    text-decoration:none;
+    color: lightgray; 
 }
 
 .info{
@@ -31,16 +32,23 @@ a:link, a:visited, a:active {
     background-image: url(../img/xiaomi.jpg);
 }
 .fondo_4{
+    height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     background-image: url(../img/contacto_oscura.jpg);
 }
 
+.fondo_5{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(../img/oficina.jpg);
+}
+
 nav{
-    background-color: BLACK;
-    z-index: 9999;
-    
+    z-index: 9999;   
 }
 
 .fixed-right-bottom {
