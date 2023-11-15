@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Marco</title>
+    <title>PhoneHub</title>
     <link rel="stylesheet" type="text/css" href="../VISTA/css/style.css">
     <link href="../VISTA/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -515,6 +514,6 @@
     </section>
     <script src="../VISTA/js/hover.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../VISTA/js/bootstrap.min.js"></script>
 </body>
 </html>
