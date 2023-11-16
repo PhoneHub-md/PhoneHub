@@ -1,7 +1,11 @@
 <?php
-
 require_once "MODELO/Conexion.php";
 require_once "CONTROL/ProductoController.php";
-$controlador = new ProductoController();
-$controlador->buscarDatos();
+require_once "CONTROL/LoginController.php";
+
+$controladorProducto = new ProductoController();
+
+$controladorProducto->manejarNavbar();
+
+include "VISTA/home.php";
 ?>
