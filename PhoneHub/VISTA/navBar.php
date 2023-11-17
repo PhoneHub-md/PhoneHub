@@ -151,19 +151,26 @@
 
 
                             <div class="modal-body">
-                                <form class="form-floating" method="post">
+                                <form class="form-floating" method="post" action="MODELO/login.php">
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="" style="height: 40px;">
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="" style="height: 40px;" required>
                                             <label for="username">Correo</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password" name="password" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="" aria-describedby="passwordHelpBlock" required>
                                             <label for="password">Contraseña</label>
                                         </div>
                                     </div>
+                                    <?php
+                                    // Verificar si hay un mensaje de error y mostrarlo
+                                    if (isset($_SESSION['error'])) {
+                                        echo '<p style="color: red;">' . $_SESSION['error'] . '</p>';
+                                        unset($_SESSION['error']); // Limpiar el mensaje de error después de mostrarlo
+                                    }
+                                    ?>
                                     <div class="row mt-4 mb-4">
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
@@ -227,7 +234,7 @@
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
+                                            <input type="password" id="password1" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
                                             <label for="password">Contraseña</label>
                                         </div>
                                     </div>
@@ -261,7 +268,10 @@
                         <?php
                         if ($nombreUsuario) {
                         ?>
-                            <button>Cerrar Sesion</button>
+                            <p><?= $nombreUsuario ?></p>
+                            <a href="MODELO/logout.php">
+                                <button>Cerrar Sesion</button>
+                            </a>
                         <?php
                         } else {
                         ?>
