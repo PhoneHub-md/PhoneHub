@@ -13,7 +13,7 @@
         <div class="container-fluid fondo d-flex flex-column justify-content-center align-content-center ">   <!--FOTO CONTAINER-->
             <div class="row">
                 <div class="col">
-                    <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold">LA MEJOR ELECCIÓN PARA TU PRÓXIMO </br> DISPOSITIVO</p>
+                    <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold">LA MEJOR ELECCIÓN PARA TU PRÓXIMO </br> DISPOSITIVO.</p>
                 </div>
             </div>
             <div class="row p-5">
@@ -50,7 +50,7 @@
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
-                                                <img class="img-fluid rounded" src="../VISTA/img/iphone-15-pro.webp">
+                                                <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -65,7 +65,7 @@
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
-                                                <img class="img-fluid rounded" src="../img/iphone-15-pro.webp">
+                                                <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -80,7 +80,7 @@
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
-                                                <img class="img-fluid rounded" src="../img/iphone-15-pro.webp">
+                                                <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -101,7 +101,7 @@
                                 <div class="col">
                                     <div class="row">
                                         <div class="col">
-                                            <img class="img-fluid rounded" src="../img/iphone-15-pro.webp">
+                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -116,7 +116,7 @@
                                 <div class="col">
                                     <div class="row">
                                         <div class="col">
-                                            <img class="img-fluid rounded" src="../img/iphone-15-pro.webp">
+                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -131,7 +131,7 @@
                                 <div class="col">
                                     <div class="row">
                                         <div class="col">
-                                            <img class="img-fluid rounded" src="../img/iphone-15-pro.webp">
+                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
                                         </div>
                                     </div>
                                     <div class="row">

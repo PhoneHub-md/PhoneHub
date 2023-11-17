@@ -36,7 +36,7 @@ a:link, a:visited, a:active {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    background-image: url(../img/contacto_oscura.jpg);
+    background-image: url(../img/fondo_contacto_def2.jpg);
 }
 
 .fondo_5{
@@ -44,7 +44,14 @@ a:link, a:visited, a:active {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    background-image: url(../img/oficina.jpg);
+    background-image: url(../img/fondo_oficina_def.jpg);
+}
+.fondo_6{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(../img/fondo_formulario.jpeg);
 }
 
 nav{
@@ -64,6 +71,12 @@ nav{
 
 .hover_nav{
     color: burlywood;
+}
+
+@media screen and (max-width: 600px) {
+    #modal_inicio_sesion{
+        display: block; /* Muestra el elemento en pantallas pequeñas */
+    }
 }
 
 

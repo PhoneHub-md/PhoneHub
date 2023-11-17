@@ -26,7 +26,7 @@
         <div class="row justify-content-center mb-5">
 
         
-        <div class="col col-sm-10 col-md-8  col-lg-7 col-xl-6 m-3 p-3 bg-body bg-opacity-25 rounded">
+        <div class="col-8   col-lg-6 col-xl-6 m-3 p-3 bg-body bg-opacity-25 rounded">
             <form class="form-floating">
               <div class="row m-1 p-1">
                 <div class="col form-floating p-2">

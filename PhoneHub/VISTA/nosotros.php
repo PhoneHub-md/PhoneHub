@@ -20,14 +20,14 @@
     <div class="container-fluid fondo_5  d-flex flex-column justify-content-center align-content-center">
         <div class="row">
             <div class="col">
-                <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold">LA MEJOR ELECCIÓN PARA TU PRÓXIMO </br> DISPOSITIVO</p>
+                <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold">CALIDAD Y SERVICIO QUE MARCAN </br> LA DIFERENCIA.</p>
             </div>
         </div>
         <div class="row p-5">
             <div class="col text-center">
                 <a class="navbar-brand" href="#caracteristicas">
-                    <button class="btn btn-outline-light mt-5 shadow border border-0" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-down-circle p-1" viewBox="0 0 16 16">
+                    <button  class="btn btn-outline-light mt-5 border border-0" >
+                        <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-down-circle p-1" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
                           </svg>
                     </button>
@@ -36,14 +36,14 @@
         </div>
     </div><!--FIN NAVBAR-->
 
-    <div id="caracteristicas" class="container-fluid">
+    <div id="caracteristicas" class="container">
         <div class="row  justify-content-center ">
             <div class="text-center col-9 col-md  mt-5 mb-2 p-3">
                 <span class="fs-1">¿POR QUÉ PHONEHUB?</span>
             </div>
         </div>
         <div class="row p-4">
-            <div class="col-12 col-md m-2 p-5">
+            <div class="col-12 col-lg m-2 p-5">
                 <div class="row p-2">
                     <div class="col text-center fs-3 fst-italic">
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-phone m-2" viewBox="0 0 16 16">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12  col-xl m-2 p-5">
+            <div class="col-12  m-2 p-5">
                 <div class="row p-2">
                     <div class="text-center fs-3 fst-italic">
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-person-raised-hand m-2" viewBox="0 0 16 16">
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-md m-2 p-5">
+                <div class="col-12 col-lg m-2 p-5">
                     <div class="row p-2">
                         <div class="col text-center fs-3 fst-italic">
                             <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-tags m-2" viewBox="0 0 16 16">
