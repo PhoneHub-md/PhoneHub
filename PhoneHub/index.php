@@ -1,11 +1,12 @@
 <?php
 require_once "MODELO/Conexion.php";
-require_once "CONTROL/ProductoController.php";
+require_once "CONTROL/NavbarController.php";
 require_once "CONTROL/LoginController.php";
+session_start();
 
-$controladorProducto = new ProductoController();
+$controladorNavbar = new NavbarController();
 
-$controladorProducto->manejarNavbar();
+$controladorNavbar->manejarNavbar();
 
 include "VISTA/home.php";
 ?>

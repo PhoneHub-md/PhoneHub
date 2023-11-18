@@ -8,31 +8,24 @@
                 </svg>
                 <span class="fw-light">marcopulido2091@gmail.com</span>
             </div>
-
             <div class="col d-flex flex-row align-items-center  justify-content-start">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone m-2" viewBox="0 0 16 16">
                     <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
                 </svg>
                 <span class="fw-light"> +34 722 677 154</span>
             </div>
-
             <div class="col d-none d-lg-flex"></div>
             <div class="col d-none d-lg-flex"></div>
-
             <div class="col d-flex flex-row align-items-center justify-content-end">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook m-2" viewBox="0 0 16 16">
                     <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                 </svg>
-
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x m-2" viewBox="0 0 16 16">
                     <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
                 </svg>
             </div>
         </div> <!--FIN BARRA TELEFONOS-->
-
-
-
-        <div class="row bg-body-secondary"> <!--LOGO-->
+        <div class="row bg-body-secondary">                     <!--BARRA LOGO-->
             <div class="col-3  d-flex  align-items-center  d-lg-none">
                 <div class="dropdown">
                     <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,19 +33,18 @@
                             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                         </svg>
                     </button>
-                    <ul class="dropdown-menu bg-body-secondary">
+                    <ul class="dropdown-menu bg-body-secondary">      <!--DROPDOWN MENU RESPONSIVE-->
                         <li class="d-flex flex-row justify-content-center">
                             <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrito_responsive" aria-controls="offcanvasRight">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag m-1" viewBox="0 0 16 16">
                                     <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                                 </svg>
                             </button>
-
                             <button class="btn btn-outline-dark border border-0 ms-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos_responsive" aria-controls="offcanvasRight">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                 </svg>
-                            </button>
+                            </button>  
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -61,47 +53,51 @@
                         <li><a class="dropdown-item text-dark" href="index.php?tienda">Tienda</a></li>
                         <li><a class="dropdown-item text-dark" href="index.php?nosotros">Nosotros</a></li>
                         <li><a class="dropdown-item text-dark" href="index.php?contacto">Contacto</a></li>
-
-                    </ul>
+                    </ul>                   <!--FIN DROPDOWN MENU RESPONSIVE-->
+                                          <!--ASIDE CARRITO Y FAVORITOS RESPONSIVE (SOLO MODAL)-->
+                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="carrito_responsive" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasRightLabel">CARRITO RESPONSIVE</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            ...
+                        </div>
+                    </div>
+                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos_responsive" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasRightLabel">FAVORITOS RESPONSIVE</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            ...
+                        </div>
+                    </div>                             <!--FIN ASIDE CARRITO Y FAVORITOS RESPONSIVE (SOLO MODAL)-->
                 </div>
 
-                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="perfil_responsive" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">PERFIL RESPONSIVE</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        ...
-                    </div>
-                </div>
-                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos_responsive" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">FAVORITOS RESPONSIVE</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        ...
-                    </div>
-                </div>
+                
+                
 
 
             </div>
-
+                                <!--LOGO-->
             <div class="col d-flex justify-content-center justify-content-lg-start">
                 <img class="img-fluid  p-3" style="width: 20em;" src="VISTA/img/PhoneHub_Logo2-fotor-2023102312412.png">
             </div>
+                                <!--FIN LOGO-->
 
+                                <!--SEARCH-->
             <div class="col d-none  d-lg-flex   align-items-center justify-content-center">
                 <form class="d-flex" role="search">
                     <input style="width: 25em;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-dark" type="submit">Search</button>
                 </form>
-            </div>
+            </div>              <!--FIN SEARCH-->
 
 
 
             <div class="col d-none d-lg-flex  d-flex  align-items-center justify-content-end">
-                <!--BOTON FAVORITOS-->
+                            <!--BOTON Y MODAL FAVORITOS-->
                 <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos" aria-controls="offcanvasRight">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
                         <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -115,8 +111,8 @@
                     <div class="offcanvas-body">
                         ...
                     </div>
-                </div>
-                <!--BOTON PERFIL-->
+                </div>              <!--FIN BOTON Y MODAL FAVORITOS-->
+                                    <!--BOTON PERFIL-->
                 <?php
                 $controladorLogin = new LoginController();
                 $nombreUsuario = $controladorLogin->verificarSesion();
@@ -137,25 +133,34 @@
 
                 <?php
                 }
+                ?>          <!--FIN BOTON PERFIL-->
+                            <!--MODAL INICIAR SESIÓN-->
+                <?php
+                // Mostrar el modal solo si hay un mensaje de error
+                if (isset($_SESSION['errorLogin'])) {
+                    echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var modal = document.getElementById("modal_inicio_sesion");
+                        var modalInstance = new bootstrap.Modal(modal);
+                        modalInstance.show();
+                    });
+                </script>';
+                }
                 ?>
-                <!--MODAL INICIAR SESIÓN-->
-                <div class="modal fade" id="modal_inicio_sesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade fondo_6" id="modal_inicio_sesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content bg-secondary bg-opacity-50 rounded">
-
                             <div class="modal-header d-flex align-items-center justify-content-center">
                                 <div class="col-3"></div>
                                 <span style="text-shadow: black 0.1em 0.1em 0.2em" class="fs-2 text-white fw-semibold">INICIAR SESIÓN</span>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-
-
                             <div class="modal-body">
-                                <form class="form-floating" method="post">
+                                <form class="form-floating" method="post" action="MODELO/login.php">
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="" style="height: 40px;">
-                                            <label for="username">Correo</label>
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="" style="height: 40px;">
+                                            <label for="email">Correo</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
@@ -164,6 +169,13 @@
                                             <label for="password">Contraseña</label>
                                         </div>
                                     </div>
+                                    <?php
+                                    // Verificar si hay un mensaje de error y mostrarlo
+                                    if (isset($_SESSION['errorLogin'])) {
+                                        echo '<p style="color: red;">' . $_SESSION['errorLogin'] . '</p>';
+                                        unset($_SESSION['errorLogin']); // Limpiar el mensaje de error después de mostrarlo
+                                    }
+                                    ?>
                                     <div class="row mt-4 mb-4">
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
@@ -187,8 +199,20 @@
                             </div>
                         </div>
                     </div>
-                </div> <!--FIN MODAL INICIAR SESIÓN-->
-                <!-- MODAL REGISTRO-->
+                </div>              <!--FIN MODAL INICIAR SESIÓN-->
+                                    <!-- MODAL REGISTRO-->
+                <?php
+                // Mostrar el modal solo si hay un mensaje de error
+                if (isset($_SESSION['errorRegistro'])) {
+                    echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var modal = document.getElementById("modal_registro");
+                        var modalInstance = new bootstrap.Modal(modal);
+                        modalInstance.show();
+                    });
+                </script>';
+                }
+                ?>
                 <div class="modal fade fondo_6" id="modal_registro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered ">
                         <div class="modal-content bg-secondary bg-opacity-25 rounded">
@@ -200,48 +224,50 @@
                                 <div class="col d-flex justify-content-end">
                                     <a href="index.php?home"><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button></a>
                                 </div>
-
-
-
                             </div>
-
-
                             <div class="modal-body">
-                                <form class="form-floating">
+                            <form class="form-floating" method="post" action="MODELO/registro.php">
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" id="nombre" placeholder="" style="height: 40px;">
+                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" style="height: 40px;">
                                             <label for="nombre">Nombre</label>
                                         </div>
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" id="apellido" placeholder="" style="height: 40px;">
+                                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="" style="height: 40px;">
                                             <label for="apellido">Apellido</label>
                                         </div>
                                     </div>
 
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="email" class="form-control" id="email" placeholder="" style="height: 40px;">
-                                            <label for="email">Correo</label>
+                                            <input type="email" class="form-control" name="email2" id="email2" placeholder="" style="height: 40px;">
+                                            <label for="email2">Correo</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
-                                            <label for="password">Contraseña</label>
+                                            <input type="password" id="password1" name="password1" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
+                                            <label for="password1">Contraseña</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password2" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
+                                            <input type="password" id="password2" name="password2" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
                                             <label for="password2">Repetir contraseña</label>
                                         </div>
                                     </div>
+                                    <?php
+                                    // Verificar si hay un mensaje de error y mostrarlo
+                                    if (isset($_SESSION['errorRegistro'])) {
+                                        echo '<p style="color: red;">' . $_SESSION['errorRegistro'] . '</p>';
+                                        unset($_SESSION['errorRegistro']); // Limpiar el mensaje de error después de mostrarlo
+                                    }
+                                    ?>
                                     <div class="row mt-4 mb-4">
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button type="button" class="btn btn-outline-light shadow-lg">Registrar</button>
+                                                <button type="submit" class="btn btn-outline-light shadow-lg">Registrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
@@ -250,7 +276,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>                          <!--FIN MODAL REGISTRO-->
+                                                <!--MODAL PERFIL-->
 
                 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="perfil" aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header">
@@ -260,19 +287,22 @@
                     <div class="offcanvas-body">
                         <?php
                         if ($nombreUsuario) {
-                        ?>
-                            <button>Cerrar Sesion</button>
-                        <?php
-                        } else {
-                        ?>
-                            <p>Inicia sesion</p>
-
-                        <?php
-                        }
+                            ?>
+                                <p><?= $nombreUsuario ?></p>
+                                <a href="MODELO/logout.php">
+                                    <button>Cerrar Sesion</button>
+                                </a>
+                            <?php
+                            } else {
+                            ?>
+                                <p>Inicia sesion</p>
+    
+                            <?php
+                            }
                         ?>
                     </div>
-                </div>
-                <!--BOTON CARRITO-->
+                </div>                      <!--FIN MODAL PERFIL-->
+                                    <!--BOTON Y MODAL CARRITO-->
                 <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="offcanvasRight">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag m-1" viewBox="0 0 16 16">
                         <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
@@ -287,36 +317,37 @@
                     <div class="offcanvas-body">
                         ...
                     </div>
-                </div>
+                </div>                      <!--FIN BOTON Y MODAL CARRITO-->
 
 
 
 
 
-            </div>
+            </div>                           <!--BOTON Y ASIDE PERFIL-->
             <div class="col-3 d-lg-none  d-flex  align-items-center justify-content-end">
                 <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#modal_inicio_sesion">
                     Iniciar sesión
                 </button>
 
-                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="carrito_responsive" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">CARRITO RESPONSIVE</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        ...
-                    </div>
-                </div>
+                
             </div>
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="perfil_responsive" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">PERFIL RESPONSIVE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                     ...
+                </div>
+            </div>                          <!--FIN BOTON Y ASIDE PERFIL-->
 
 
 
-        </div> <!--FIN LOGO-->
+        </div> <!--FIN CAJA LOGO-->
     </div>
 </header>
 
-<nav class=" container-fluid d-none d-lg-flex sticky-top bg-black"> <!--NAVBAR-->
+<nav class=" container-fluid d-none d-lg-flex sticky-top bg-black"> <!--NAVBAR NO RESPONSIVE-->
     <div class="container-fluid">
         <div class="row p-2">
 
@@ -338,6 +369,6 @@
 
         </div>
     </div>
-</nav> <!--FIN NAVBAR-->
+</nav> <!--FIN NAVBAR NO RESPONSIVE-->
 
 <script src="VISTA/js/modal.js"></script>

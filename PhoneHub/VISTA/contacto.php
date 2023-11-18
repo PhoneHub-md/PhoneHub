@@ -17,49 +17,50 @@
         </a>
     </div>
 
-    <div class="container-fluid fondo_4 d-flex flex-column ">   <!--FOTO CONTAINER-->
-        <div class="row  p-5 mt-5">
+    <div class="container-fluid fondo_4 d-flex flex-column ">      <!--FOTO CONTAINER-->
+        
+        <div class="row ">
             <div class="col">
                 <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold"> ¡CONTÁCTANOS!</p>
             </div>
         </div>
-        <div class="row justify-content-center mb-5">
+        <div class="row justify-content-center">
 
         
-        <div class="col-8   col-lg-6 col-xl-6 m-3 p-3 bg-body bg-opacity-25 rounded">
+        <div  class="col-10 col-sm-8  col-lg-6 col-xl-6 m-3 p-3 bg-body bg-opacity-25 rounded">
             <form class="form-floating">
-              <div class="row m-1 p-1">
-                <div class="col form-floating p-2">
+              <div class="row">
+                <div class="col form-floating p-2 m-1">
                   <input type="text" class="form-control" id="nombre" placeholder="" style="height: 40px;">
                     <label  for="nombre">Nombre</label>
                 </div>
-                <div class="col form-floating p-2">
+                <div class="col form-floating p-2 m-1">
                   <input type="text" class="form-control" id="apellido" placeholder="" style="height: 40px;">
                    <label  for="apellido">Apellido</label>
                 </div>
               </div>
-                <div class="row m-1 p-1 ">
-                <div class="col form-floating p-2">
+                <div class="row">
+                <div class="col form-floating p-2 m-1">
                   <input type="email" class="form-control" id="email" placeholder="" style="height: 40px;">
                   <label  for="email">Correo</label>
                 </div>
               </div>
-              <div class="row m-1 p-1">
-                <div class="col form-floating p-2">
+              <div class="row">
+                <div class="col form-floating p-2 m-1">
                   <input type="text" class="form-control" id="consulta" placeholder="" style="height: 100px">
                       <label  for="consulta">Consulta</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-7">
-              <div class="row m-3 ">
-                <div class="form-check form-switch  ">
+              <div class="row">
+                <div class="form-check form-switch   m-1">
                   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                   <label class="form-check-label text-white " for="flexSwitchCheckDefault">Quiero recibir ofertas y novedades.</label>
                 </div>
               </div>
-              <div class="row m-3">
-                <div class="form-check form-switch ">
+              <div class="row">
+                <div class="form-check form-switch m-1">
                   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                   <label class="form-check-label text-white" for="flexSwitchCheckDefault">Acepto los términos y condiciones.</label>
                 </div>
@@ -67,7 +68,7 @@
               </div>
               </div>
               <div class="col-5 align-self-center">
-                <div class="row m-3">
+                <div class="row">
                   <button type="button"  class="btn btn-outline-light shadow-lg">Enviar</button>
                 </div>
               </div>
