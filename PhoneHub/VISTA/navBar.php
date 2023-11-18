@@ -165,7 +165,7 @@
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password" name="password" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="" aria-describedby="passwordHelpBlock" required>
                                             <label for="password">Contraseña</label>
                                         </div>
                                     </div>
