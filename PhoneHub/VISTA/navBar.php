@@ -24,7 +24,7 @@
                     <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
                 </svg>
             </div>
-        </div> <!--FIN BARRA TELEFONOS-->
+        </div>                              <!--FIN BARRA TELEFONOS-->
         <div class="row bg-body-secondary">                     <!--BARRA LOGO-->
             <div class="col-3  d-flex  align-items-center  d-lg-none">
                 <div class="dropdown">
@@ -61,7 +61,23 @@
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            ...
+                        <?php
+                        if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
+                            echo "<ul>";
+                            foreach ($_SESSION['carrito'] as  $productoId => $producto) {
+                                echo "<li>";
+                                echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
+                                echo "<form method='post' action='MODELO/eliminarDelCarrito.php'>";
+                                echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
+                                echo "<button type='submit'>Borrar</button>";
+                                echo "</form>";
+                                echo "</li>";
+                            }
+                            echo "</ul>";
+                        } else {
+                            echo "El carrito está vacío.";
+                        }
+                        ?>
                         </div>
                     </div>
                     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos_responsive" aria-labelledby="offcanvasRightLabel">
@@ -74,11 +90,6 @@
                         </div>
                     </div>                             <!--FIN ASIDE CARRITO Y FAVORITOS RESPONSIVE (SOLO MODAL)-->
                 </div>
-
-                
-                
-
-
             </div>
                                 <!--LOGO-->
             <div class="col d-flex justify-content-center justify-content-lg-start">
@@ -94,60 +105,8 @@
                 </form>
             </div>              <!--FIN SEARCH-->
 
-
-
-            <div class="col d-none d-lg-flex  d-flex  align-items-center justify-content-end">
-                            <!--BOTON Y MODAL FAVORITOS-->
-                <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos" aria-controls="offcanvasRight">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
-                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                    </svg>
-                </button>
-                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">FAVORITOS</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        ...
-                    </div>
-                </div>              <!--FIN BOTON Y MODAL FAVORITOS-->
-                                    <!--BOTON PERFIL-->
-                <?php
-                $controladorLogin = new LoginController();
-                $nombreUsuario = $controladorLogin->verificarSesion();
-
-                if ($nombreUsuario) {
-                ?>
-                    <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person m-1" viewBox="0 0 16 16">
-                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                        </svg>
-                    </button>
-                <?php
-                } else {
-                ?>
-                    <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#modal_inicio_sesion">
-                        Iniciar sesión
-                    </button>
-
-                <?php
-                }
-                ?>          <!--FIN BOTON PERFIL-->
-                            <!--MODAL INICIAR SESIÓN-->
-                <?php
-                // Mostrar el modal solo si hay un mensaje de error
-                if (isset($_SESSION['errorLogin'])) {
-                    echo '<script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        var modal = document.getElementById("modal_inicio_sesion");
-                        var modalInstance = new bootstrap.Modal(modal);
-                        modalInstance.show();
-                    });
-                </script>';
-                }
-                ?>
-                <div class="modal fade fondo_6" id="modal_inicio_sesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <!--MODAL INICIAR SESIÓN-->
+            <div class="modal fade fondo_6" id="modal_inicio_sesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content bg-secondary bg-opacity-50 rounded">
                             <div class="modal-header d-flex align-items-center justify-content-center">
@@ -200,6 +159,7 @@
                         </div>
                     </div>
                 </div>              <!--FIN MODAL INICIAR SESIÓN-->
+
                                     <!-- MODAL REGISTRO-->
                 <?php
                 // Mostrar el modal solo si hay un mensaje de error
@@ -226,7 +186,7 @@
                                 </div>
                             </div>
                             <div class="modal-body">
-                            <form class="form-floating" method="post" action="MODELO/registro.php">
+                            <form id="registroForm" class="form-floating" method="post" action="MODELO/registro.php">
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
                                             <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" style="height: 40px;">
@@ -240,7 +200,7 @@
 
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="email" class="form-control" name="email2" id="email2" placeholder="" style="height: 40px;">
+                                            <input type="text" class="form-control" name="email2" id="email2" placeholder="" style="height: 40px;">
                                             <label for="email2">Correo</label>
                                         </div>
                                     </div>
@@ -267,16 +227,70 @@
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button type="submit" class="btn btn-outline-light shadow-lg">Registrar</button>
+                                                <button id="registrar" type="submit" class="btn btn-outline-light shadow-lg">Registrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
                                     </div>
+                                    <div id="mensajesValidacion_registro" class="div"></div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>                          <!--FIN MODAL REGISTRO-->
+            <div class="col   d-flex  align-items-center justify-content-end">   <!--COLUMNA BOTON INICIAR SESION, FAVORITOS Y CARRITO-->
+                            <!--BOTON Y MODAL FAVORITOS-->
+                            <?php                       
+                $controladorLogin = new LoginController();
+                $nombreUsuario = $controladorLogin->verificarSesion();
+
+                if ($nombreUsuario) {
+                ?>
+                    <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person m-1" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                        </svg>
+                    </button>
+                <?php
+                } else {
+                ?>
+                    <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#modal_inicio_sesion">
+                        Iniciar sesión
+                    </button>
+
+                <?php
+                }
+                ?>          
+                            
+                <?php
+                // Mostrar el modal solo si hay un mensaje de error
+                if (isset($_SESSION['errorLogin'])) {
+                    echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var modal = document.getElementById("modal_inicio_sesion");
+                        var modalInstance = new bootstrap.Modal(modal);
+                        modalInstance.show();
+                    });
+                </script>';
+                }
+                ?>                      <!--BOTON Y MODAL FAVORITOS-->
+                <button class="btn btn-outline-dark border border-0 d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos" aria-controls="offcanvasRight">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                </button>
+                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">FAVORITOS</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        ...
+                    </div>
+                </div>              <!--FIN BOTON Y MODAL FAVORITOS-->
+                                    
+                             
+                                    
                                                 <!--MODAL PERFIL-->
 
                 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="perfil" aria-labelledby="offcanvasRightLabel">
@@ -303,7 +317,7 @@
                     </div>
                 </div>                      <!--FIN MODAL PERFIL-->
                                     <!--BOTON Y MODAL CARRITO-->
-                <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="offcanvasRight">
+                <button class="btn btn-outline-dark border border-0 d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="offcanvasRight">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag m-1" viewBox="0 0 16 16">
                         <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                     </svg>
@@ -315,7 +329,23 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        ...
+                    <?php
+                        if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
+                            echo "<ul>";
+                            foreach ($_SESSION['carrito'] as  $productoId => $producto) {
+                                echo "<li>";
+                                echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
+                                echo "<form method='post' action='MODELO/eliminarDelCarrito.php'>";
+                                echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
+                                echo "<button type='submit'>Borrar</button>";
+                                echo "</form>";
+                                echo "</li>";
+                            }
+                            echo "</ul>";
+                        } else {
+                            echo "El carrito está vacío.";
+                        }
+                        ?>
                     </div>
                 </div>                      <!--FIN BOTON Y MODAL CARRITO-->
 
@@ -323,23 +353,8 @@
 
 
 
-            </div>                           <!--BOTON Y ASIDE PERFIL-->
-            <div class="col-3 d-lg-none  d-flex  align-items-center justify-content-end">
-                <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#modal_inicio_sesion">
-                    Iniciar sesión
-                </button>
-
-                
-            </div>
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="perfil_responsive" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel">PERFIL RESPONSIVE</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                     ...
-                </div>
-            </div>                          <!--FIN BOTON Y ASIDE PERFIL-->
+            </div>                           
+                               
 
 
 
@@ -370,5 +385,5 @@
         </div>
     </div>
 </nav> <!--FIN NAVBAR NO RESPONSIVE-->
-
+<script src="VISTA/js/form_registro.js"></script>
 <script src="VISTA/js/modal.js"></script>

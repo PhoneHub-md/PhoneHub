@@ -1,3 +1,11 @@
+<?php
+    require_once "MODELO/Conexion.php";
+    require_once "CONTROL/ProductoController.php";
+
+    $controlador = new ProductoController();
+    $novedades = $controlador->buscarNovedades();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +46,7 @@
         <div class="container-fluid bg-body-secondary">       <!--CONTAINER CARROUSSEL-->
             <div class="row  justify-content-center ">
                 <div class="text-center col-9 col-md  mt-5 mb-2 p-3">
-                    <span class="fs-1">LOS DISPOSITIVOS MAS VENDIDOS</span>
+                    <span class="fs-1">Últimas novedades</span>
                 </div>
             </div>
             <div class="row p-5 d-none d-md-block">         <!--CARROUSSEL NO RESPONSIVE-->
@@ -47,105 +55,66 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">   <!--PRIMEROS 3 PRODUCTOS-->
                                 <div class="row">
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
+                                    <?php 
+                                    $contador = 0;
+                                    foreach ($novedades as $producto): 
+                                        if ($contador < 3):
+                                    ?>
+                                        
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col d-flex flex-column">
-                                                <span class="p-1">Iphone 15 128Gb</span>
-                                            <span class="p-1 fw-bold">500€</span>
+                                            <div class="row">
+                                                <div class="col d-flex flex-column">
+                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
+                                                <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                </div>
+                                                
                                             </div>
                                             
                                         </div>
-                                        
-                                    </div>
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col d-flex flex-column">
-                                                <span class="p-1">Iphone 15 128Gb</span>
-                                            <span class="p-1 fw-bold">500€</span>
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col d-flex flex-column">
-                                                <span class="p-1">Iphone 15 128Gb</span>
-                                            <span class="p-1 fw-bold">500€</span>
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                    </div>
-                                    
+                                    <?php 
+                                        endif;
+                                        $contador++;
+                                    endforeach; 
+                                    ?>
                                 </div>
                             </div>                  <!--FIN PRIMEROS 3 PRODUCTOS-->
 
-                          <div class="carousel-item" data-bs-interval="5000">               <!--SEGUNDOS 3 PRODUCTOS-->
-                            <div class="row">
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col d-flex flex-column">
-                                            <span class="p-1">Iphone 15 128Gb</span>
-                                        <span class="p-1 fw-bold">500€</span>
-                                        </div>
+                            <div class="carousel-item" data-bs-interval="5000">   <!--SEGUNDOS 3 PRODUCTOS-->
+                                <div class="row">
+                                    <?php 
+                                    $contador = 0;
+                                    foreach ($novedades as $producto): 
+                                        if ($contador >= 3):
+                                    ?>
                                         
-                                    </div>
-                                    
-                                </div>
-                                <div class="col">
-                                    <div class="row">
                                         <div class="col">
-                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col d-flex flex-column">
+                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
+                                                <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                </div>
+                                                
+                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col d-flex flex-column">
-                                            <span class="p-1">Iphone 15 128Gb</span>
-                                        <span class="p-1 fw-bold">500€</span>
-                                        </div>
-                                        
-                                    </div>
-                                    
+                                    <?php 
+                                        endif;
+                                        $contador++;
+                                    endforeach; 
+                                    ?>
                                 </div>
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col d-flex flex-column">
-                                            <span class="p-1">Iphone 15 128Gb</span>
-                                        <span class="p-1 fw-bold">500€</span>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                </div>
-                                
                             </div>
-                          </div>                        <!--FIN SEGUNDOS 3 PRODUCTOS-->
+                                                  <!--FIN SEGUNDOS 3 PRODUCTOS-->
                           
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExamplee" data-bs-slide="prev">
@@ -156,7 +125,7 @@
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
-                      </div>
+                    </div>
                 </div>
             </div>                              <!--FIN CARROUSSEL NO RESPONISVE-->
 

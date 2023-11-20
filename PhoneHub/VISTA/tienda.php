@@ -55,26 +55,31 @@
             require_once "CONTROL/ProductoController.php";
 
             $controlador = new ProductoController();
-            $data["moviles"] = $controlador->buscarDatos();
+            $moviles = $controlador->buscarDatos();
 
-            foreach ($data["moviles"] as $producto) {
-                ?>
+            foreach ($moviles as $producto) {
+            ?>
                 <div class="col-6 col-md-4 col-xl-3 mt-3 mb-5">
                     <div class="card">
                             <img src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>" class="card-img-top" alt="...">                        <div class="card-body">
                             <h5 class="card-title"><?php echo $producto['titulo']; ?></h5>
                             <p class="card-text"><?php echo $producto['descripcion']; ?></p>
                             <p class="card-text"><?php echo $producto['precio']; ?> €</p>
-                            <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                            <form method="post" action="MODELO/anadirAlCarrito.php">
+                                <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
+                                <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                <button type="submit" class="btn btn-primary" >Agregar al Carrito</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
-                <?php
+            <?php
             }
-            ?>
-            
-            </div>
+            ?> 
         </div>
+    </div>
     </div>
 
 

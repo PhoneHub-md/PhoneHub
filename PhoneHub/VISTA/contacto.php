@@ -28,40 +28,40 @@
 
         
         <div  class="col-10 col-sm-8  col-lg-6 col-xl-6 m-3 p-3 bg-body bg-opacity-25 rounded">
-            <form class="form-floating">
+            <form id="miFormulario" class="form-floating">
               <div class="row">
                 <div class="col form-floating p-2 m-1">
-                  <input type="text" class="form-control" id="nombre" placeholder="" style="height: 40px;">
-                    <label  for="nombre">Nombre</label>
+                  <input type="text" class="form-control" id="nombre_contacto" placeholder="" style="height: 40px;">
+                    <label  for="nombre_contacto">Nombre*</label>
                 </div>
                 <div class="col form-floating p-2 m-1">
-                  <input type="text" class="form-control" id="apellido" placeholder="" style="height: 40px;">
-                   <label  for="apellido">Apellido</label>
+                  <input type="text" class="form-control" id="apellido_contacto" placeholder="" style="height: 40px;">
+                   <label  for="apellido_contacto">Apellido*</label>
                 </div>
               </div>
                 <div class="row">
                 <div class="col form-floating p-2 m-1">
-                  <input type="email" class="form-control" id="email" placeholder="" style="height: 40px;">
-                  <label  for="email">Correo</label>
+                  <input type="text" class="form-control" id="email_contacto" placeholder="" style="height: 40px;">
+                  <label  for="email_contacto">Correo*</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col form-floating p-2 m-1">
-                  <input type="text" class="form-control" id="consulta" placeholder="" style="height: 100px">
-                      <label  for="consulta">Consulta</label>
+                  <input type="text" class="form-control" id="consulta_contacto" placeholder="" style="height: 100px">
+                      <label  for="consulta_contacto">Consulta*</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-7">
               <div class="row">
                 <div class="form-check form-switch   m-1">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                  <input class="form-check-input" type="checkbox" role="switch" id="check1">
                   <label class="form-check-label text-white " for="flexSwitchCheckDefault">Quiero recibir ofertas y novedades.</label>
                 </div>
               </div>
               <div class="row">
                 <div class="form-check form-switch m-1">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                  <input class="form-check-input" type="checkbox" role="switch" id="check2">
                   <label class="form-check-label text-white" for="flexSwitchCheckDefault">Acepto los términos y condiciones.</label>
                 </div>
                 
@@ -69,10 +69,12 @@
               </div>
               <div class="col-5 align-self-center">
                 <div class="row">
-                  <button type="button"  class="btn btn-outline-light shadow-lg">Enviar</button>
+                  <button id="boton_submit" type="submit"  class="btn btn-outline-light shadow-lg">Enviar</button>
                 </div>
               </div>
             </div>
+            <div id="mensajesValidacion_contacto"></div>
+            
             </form>
           </div>
         </div>
@@ -82,7 +84,7 @@
 
 
 
-
+    <script src="VISTA/js/validacion_contacto.js"></script>
     <script src="VISTA/js/hover.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="VISTA/js/bootstrap.min.js"></script>

@@ -9,4 +9,10 @@ class ProductoController{
         return $producto->pedirDatos();
     }
 
+    public function buscarNovedades(){
+
+        $producto = new Producto();
+        return $producto->pedirNovedades();
+
+    }
 }
