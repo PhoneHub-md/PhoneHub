@@ -73,6 +73,7 @@
                             ?>
                                 <form>
                                     <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                    <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                     <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
                                     <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
                                     <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>

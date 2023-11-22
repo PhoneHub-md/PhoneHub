@@ -10,6 +10,7 @@ if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
         echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
         echo "<form>";
         echo "<input type='hidden' name='idProducto' value='" . $productoId . "'>";
+        echo "<img src='" . $producto['imagen'] . "'></img>";
         echo "<button type='button' class='eliminarDelCarrito'>Borrar</button>";
         echo "</form>";
         echo "</li>";
