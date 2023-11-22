@@ -3,7 +3,7 @@ session_start();
 
 require_once('Conexion.php');
 
-if (isset($_SESSION['carrito']) || isset($_SESSION['favoritos'])) {
+if (isset($_SESSION['carrito']) || isset($_SESSION['favoritos']) && !isset($_SESSION['admin'])) {
     $cartData = isset($_SESSION['carrito']) ? serialize($_SESSION['carrito']) : null;
     $favsData = isset($_SESSION['favoritos']) ? serialize($_SESSION['favoritos']) : null;
 
@@ -16,8 +16,8 @@ if (isset($_SESSION['carrito']) || isset($_SESSION['favoritos'])) {
     $stmt->execute();
 
     $stmt->close();
-    session_destroy();
 }
+session_destroy();
 
 header('Location: ../index.php?home');
 ?>

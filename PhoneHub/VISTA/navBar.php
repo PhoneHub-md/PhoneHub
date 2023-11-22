@@ -60,23 +60,9 @@
                             <h5 class="offcanvas-title" id="offcanvasRightLabel">CARRITO RESPONSIVE</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <div class="offcanvas-body">
+                        <div class="offcanvas-body" id="divCarritoResp">
                             <?php
-                            if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
-                                echo "<ul>";
-                                foreach ($_SESSION['carrito'] as  $productoId => $producto) {
-                                    echo "<li>";
-                                    echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
-                                    echo "<form method='post' action='MODELO/eliminarDelCarrito.php'>";
-                                    echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
-                                    echo "<button type='submit'>Borrar</button>";
-                                    echo "</form>";
-                                    echo "</li>";
-                                }
-                                echo "</ul>";
-                            } else {
-                                echo "El carrito está vacío.";
-                            }
+                            include 'MODELO/obtenerCarrito.php'
                             ?>
                         </div>
                     </div>
@@ -85,23 +71,9 @@
                             <h5 class="offcanvas-title" id="offcanvasRightLabel">FAVORITOS RESPONSIVE</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <div class="offcanvas-body">
+                        <div class="offcanvas-body" id="divFavsResp">
                             <?php
-                            if (isset($_SESSION['favoritos']) && !empty($_SESSION['favoritos'])) {
-                                echo "<ul>";
-                                foreach ($_SESSION['favoritos'] as  $productoId => $producto) {
-                                    echo "<li>";
-                                    echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
-                                    echo "<form method='post' action='MODELO/eliminarDeFavs.php'>";
-                                    echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
-                                    echo "<button type='submit'>Borrar</button>";
-                                    echo "</form>";
-                                    echo "</li>";
-                                }
-                                echo "</ul>";
-                            } else {
-                                echo "No tiene productos favoritos.";
-                            }
+                            include 'MODELO/obtenerFavs.php'
                             ?>
                         </div>
                     </div>                             <!--FIN ASIDE CARRITO Y FAVORITOS RESPONSIVE (SOLO MODAL)-->
@@ -122,6 +94,18 @@
             </div>              <!--FIN SEARCH-->
 
                                 <!--MODAL INICIAR SESIÓN-->
+            <?php
+            // Mostrar el modal solo si hay un mensaje de error
+            if (isset($_SESSION['errorLogin'])) {
+                echo '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var modal = document.getElementById("modal_inicio_sesion");
+                    var modalInstance = new bootstrap.Modal(modal);
+                    modalInstance.show();
+                });
+            </script>';
+            }
+            ?>
             <div class="modal fade fondo_6" id="modal_inicio_sesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content bg-secondary bg-opacity-50 rounded">
@@ -134,7 +118,7 @@
                                 <form class="form-floating" method="post" action="MODELO/login.php">
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="" style="height: 40px;">
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="" style="height: 40px;" required>
                                             <label for="email">Correo</label>
                                         </div>
                                     </div>
@@ -145,10 +129,9 @@
                                         </div>
                                     </div>
                                     <?php
-                                    // Verificar si hay un mensaje de error y mostrarlo
                                     if (isset($_SESSION['errorLogin'])) {
                                         echo '<p style="color: red;">' . $_SESSION['errorLogin'] . '</p>';
-                                        unset($_SESSION['errorLogin']); // Limpiar el mensaje de error después de mostrarlo
+                                        unset($_SESSION['errorLogin']);
                                     }
                                     ?>
                                     <div class="row mt-4 mb-4">
@@ -205,7 +188,7 @@
                             <form id="registroForm" class="form-floating" method="post" action="MODELO/registro.php">
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" style="height: 40px;">
+                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" style="height: 40px;" required>
                                             <label for="nombre">Nombre</label>
                                         </div>
                                         <div class="col form-floating p-2">
@@ -216,27 +199,26 @@
 
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" name="email2" id="email2" placeholder="" style="height: 40px;">
+                                            <input type="text" class="form-control" name="email2" id="email2" placeholder="" style="height: 40px;" required>
                                             <label for="email2">Correo</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password1" name="password1" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
+                                            <input type="password" id="password1" name="password1" class="form-control" placeholder="" aria-describedby="passwordHelpBlock" required>
                                             <label for="password1">Contraseña</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password2" name="password2" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
+                                            <input type="password" id="password2" name="password2" class="form-control" placeholder="" aria-describedby="passwordHelpBlock" required>
                                             <label for="password2">Repetir contraseña</label>
                                         </div>
                                     </div>
                                     <?php
-                                    // Verificar si hay un mensaje de error y mostrarlo
                                     if (isset($_SESSION['errorRegistro'])) {
                                         echo '<p style="color: red;">' . $_SESSION['errorRegistro'] . '</p>';
-                                        unset($_SESSION['errorRegistro']); // Limpiar el mensaje de error después de mostrarlo
+                                        unset($_SESSION['errorRegistro']);
                                     }
                                     ?>
                                     <div class="row mt-4 mb-4">
@@ -299,23 +281,9 @@
                         <h5 class="offcanvas-title" id="offcanvasRightLabel">FAVORITOS</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
+                    <div class="offcanvas-body" id="divFavs">
                         <?php
-                        if (isset($_SESSION['favoritos']) && !empty($_SESSION['favoritos'])) {
-                            echo "<ul>";
-                            foreach ($_SESSION['favoritos'] as  $productoId => $producto) {
-                                echo "<li>";
-                                echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
-                                echo "<form method='post' action='MODELO/eliminarDeFavs.php'>";
-                                echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
-                                echo "<button type='submit'>Borrar</button>";
-                                echo "</form>";
-                                echo "</li>";
-                            }
-                            echo "</ul>";
-                        } else {
-                            echo "No tiene productos favoritos.";
-                        }
+                        include 'MODELO/obtenerFavs.php'
                         ?>
                     </div>
                 </div>              <!--FIN BOTON Y MODAL FAVORITOS-->
@@ -359,23 +327,9 @@
                         <h5 class="offcanvas-title" id="offcanvasRightLabel">CARRITO</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
+                    <div class="offcanvas-body" id="divCarrito">
                     <?php
-                        if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
-                            echo "<ul>";
-                            foreach ($_SESSION['carrito'] as  $productoId => $producto) {
-                                echo "<li>";
-                                echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
-                                echo "<form method='post' action='MODELO/eliminarDelCarrito.php'>";
-                                echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
-                                echo "<button type='submit'>Borrar</button>";
-                                echo "</form>";
-                                echo "</li>";
-                            }
-                            echo "</ul>";
-                        } else {
-                            echo "El carrito está vacío.";
-                        }
+                        include 'MODELO/obtenerCarrito.php'
                         ?>
                     </div>
                 </div>                      <!--FIN BOTON Y MODAL CARRITO-->
@@ -418,3 +372,92 @@
 </nav> <!--FIN NAVBAR NO RESPONSIVE-->
 <script src="VISTA/js/form_registro.js"></script>
 <script src="VISTA/js/modal.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Manejar clic en el botón "Agregar al Carrito"
+        $(document).on('click', '.eliminarDelCarrito', function () {
+            var formData = $(this).closest('form').serialize();
+            eliminarDelCarrito(formData);
+        });
+
+        // Manejar clic en el botón "Agregar a Favoritos"
+        $(document).on('click', '.eliminarDeFavoritos', function () {
+            var formData = $(this).closest('form').serialize();
+            eliminarDeFavoritos(formData);
+        });
+
+        function eliminarDelCarrito(formData) {
+            $.ajax({
+                type: 'POST',
+                url: 'MODELO/eliminarDelCarrito.php',
+                data: formData,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        console.log('Producto eliminado del carrito');
+                        actualizarCarrito();
+                    } else {
+                        console.log('Error: ' + response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function eliminarDeFavoritos(formData) {
+            $.ajax({
+                type: 'POST',
+                url: 'MODELO/eliminarDeFavs.php',
+                data: formData,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        console.log('Producto eliminado de favoritos');
+                        actualizarFavoritos();
+                    } else {
+                        console.log('Error: ' + response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function actualizarCarrito() {
+            $.ajax({
+                url: 'MODELO/obtenerCarrito.php',
+                type: 'GET',
+                dataType: 'html',
+                success: function(data) {
+                    console.log('Información del carrito actualizada:');
+                    $('#divCarrito').html(data);
+                    $('#divCarritoResp').html(data);
+                },
+                error: function() {
+                    console.log('Error al obtener la información del carrito.');
+                }
+            });
+        }
+
+        function actualizarFavoritos() {
+            $.ajax({
+                url: 'MODELO/obtenerFavs.php',
+                type: 'GET',
+                dataType: 'html',
+                success: function(data) {
+                    console.log('Información de favoritos actualizada:');
+                    $('#divFavs').html(data);
+                    $('#divFavsResp').html(data);
+                    divCarritoResp
+                },
+                error: function() {
+                    console.log('Error al obtener la información de favoritos.');
+                }
+            });
+        }
+    });
+</script>

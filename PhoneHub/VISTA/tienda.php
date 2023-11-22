@@ -66,24 +66,25 @@
                             <h5 class="card-title"><?php echo $producto['titulo']; ?></h5>
                             <p class="card-text"><?php echo $producto['descripcion']; ?></p>
                             <p class="card-text"><?php echo $producto['precio']; ?> €</p>
-                            <div class="d-flex">
-                                <form method="post" action="MODELO/anadirAlCarrito.php">
+                            <?php
+                            if(isset($_SESSION['admin'])){
+                                echo '<button type="submit" class="btn btn-primary">Editar</button>';
+                            }else{
+                            ?>
+                                <form>
                                     <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                     <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
                                     <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                    <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
-                                </form>
-                                <form method="post" action="MODELO/anadirAFavs.php">
-                                    <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                    <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                    <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                    <button type="submit" class="btn btn-primary btn-sm" >
+                                    <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
+                                    <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
                                             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                         </svg>
                                     </button>
                                 </form>
-                            </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -97,5 +98,93 @@
     <script src="VISTA/js/hover.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="VISTA/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Manejar clic en el botón "Agregar al Carrito"
+            $(document).on('click', '.anadirAlCarrito', function () {
+                var formData = $(this).closest('form').serialize();
+                agregarAlCarrito(formData);
+            });
+
+            // Manejar clic en el botón "Agregar a Favoritos"
+            $(document).on('click', '.anadirAFavoritos', function () {
+                var formData = $(this).closest('form').serialize();
+                agregarAFavoritos(formData);
+            });
+
+            function agregarAlCarrito(formData) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'MODELO/anadirAlCarrito.php',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            console.log('Producto agregado al carrito');
+                            actualizarCarrito();
+                        } else {
+                            console.log('Error: ' + response.message);
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+
+            function agregarAFavoritos(formData) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'MODELO/anadirAFavs.php',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            console.log('Producto agregado a favoritos');
+                            actualizarFavoritos();
+                        } else {
+                            console.log('Error: ' + response.message);
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+
+            function actualizarCarrito() {
+                $.ajax({
+                    url: 'MODELO/obtenerCarrito.php',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function(data) {
+                        console.log('Información del carrito actualizada:');
+                        $('#divCarrito').html(data);
+                        $('#divCarritoResp').html(data);
+                    },
+                    error: function() {
+                        console.log('Error al obtener la información del carrito.');
+                    }
+                });
+            }
+
+            function actualizarFavoritos() {
+                $.ajax({
+                    url: 'MODELO/obtenerFavs.php',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function(data) {
+                        console.log('Información de favoritos actualizada:');
+                        $('#divFavs').html(data);
+                        $('#divFavsResp').html(data);
+                        divCarritoResp
+                    },
+                    error: function() {
+                        console.log('Error al obtener la información de favoritos.');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

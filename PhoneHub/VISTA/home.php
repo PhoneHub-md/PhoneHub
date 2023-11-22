@@ -26,7 +26,7 @@
             </div>
             <div class="row p-5">
                 <div class="col text-center">
-                    <a href="tienda.php"><button class="btn btn-outline-light mt-5 shadow" >Descubrir</button></a>
+                    <a href="index.php?tienda"><button class="btn btn-outline-light mt-5 shadow" >Descubrir</button></a>
                 </div>
             </div>
            
@@ -70,7 +70,18 @@
                                             <div class="row">
                                                 <div class="col d-flex flex-column">
                                                     <span class="p-1"><?php echo $producto['titulo']; ?></span>
-                                                <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <form>
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                                        <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
+                                                        <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                                 
                                             </div>
@@ -91,7 +102,6 @@
                                     foreach ($novedades as $producto): 
                                         if ($contador >= 3):
                                     ?>
-                                        
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
@@ -101,7 +111,18 @@
                                             <div class="row">
                                                 <div class="col d-flex flex-column">
                                                     <span class="p-1"><?php echo $producto['titulo']; ?></span>
-                                                <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <form>
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                                        <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
+                                                        <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                                 
                                             </div>
@@ -135,114 +156,121 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">    <!--PRIMEROS 2 PRODUCTOS-->
                                 <div class="row">
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
+                                    <?php 
+                                    $contador = 0;
+                                    foreach ($novedades as $producto): 
+                                        if ($contador < 2):
+                                    ?>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col d-flex flex-column">
-                                                <span class="p-1">Iphone 15 128Gb</span>
-                                            <span class="p-1 fw-bold">500€</span>
+                                            <div class="row">
+                                                <div class="col d-flex flex-column">
+                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
+                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <form>
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                                        <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
+                                                        <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                
                                             </div>
                                             
                                         </div>
-                                        
-                                    </div>
-                                    
-                                    <div class="col">
-                                        <div class="row">
-                                            <div class="col">
-                                                <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col d-flex flex-column">
-                                                <span class="p-1">Iphone 15 128Gb</span>
-                                            <span class="p-1 fw-bold">500€</span>
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                    </div>
-                                    
+                                    <?php 
+                                        endif;
+                                        $contador++;
+                                    endforeach; 
+                                    ?>   
                                 </div>
                             </div>
-                          <div class="carousel-item" data-bs-interval="5000">      <!--SEGUNDOS 2 PRODUCTOS-->
-                            <div class="row">
-                                
-                                <div class="col">
-                                    <div class="row">
+                            <div class="carousel-item" data-bs-interval="5000">      <!--SEGUNDOS 2 PRODUCTOS-->
+                                <div class="row">
+                                    <?php 
+                                    $contador = 0;
+                                    foreach ($novedades as $producto): 
+                                        if ($contador >= 2 && $contador <4):
+                                    ?>
                                         <div class="col">
-                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col d-flex flex-column">
+                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
+                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <form>
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                                        <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
+                                                        <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col d-flex flex-column">
-                                            <span class="p-1">Iphone 15 128Gb</span>
-                                        <span class="p-1 fw-bold">500€</span>
-                                        </div>
-                                        
-                                    </div>
-                                    
+                                    <?php 
+                                        endif;
+                                        $contador++;
+                                    endforeach; 
+                                    ?>
                                 </div>
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col d-flex flex-column">
-                                            <span class="p-1">Iphone 15 128Gb</span>
-                                        <span class="p-1 fw-bold">500€</span>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                </div>
-                                
                             </div>
-                          </div>
 
-                          <div class="carousel-item" data-bs-interval="5000">      <!--TERCEROS 2 PRODUCTOS-->
-                            <div class="row">
-                                
-                                <div class="col">
-                                    <div class="row">
+                            <div class="carousel-item" data-bs-interval="5000">      <!--TERCEROS 2 PRODUCTOS-->
+                                <div class="row">
+                                    <?php 
+                                    $contador = 0;
+                                    foreach ($novedades as $producto): 
+                                        if ($contador >= 4):
+                                    ?>
                                         <div class="col">
-                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col d-flex flex-column">
+                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
+                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <form>
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                                        <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
+                                                        <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col d-flex flex-column">
-                                            <span class="p-1">Iphone 15 128Gb</span>
-                                        <span class="p-1 fw-bold">500€</span>
-                                        </div>
-                                        
-                                    </div>
-                                    
+                                    <?php 
+                                        endif;
+                                        $contador++;
+                                    endforeach; 
+                                    ?>
                                 </div>
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col">
-                                            <img class="img-fluid rounded" src="VISTA/img/iphone-15-pro.webp">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col d-flex flex-column">
-                                            <span class="p-1">Iphone 15 128Gb</span>
-                                        <span class="p-1 fw-bold">500€</span>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                </div>
-                                
                             </div>
-                          </div>
-                          
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -268,7 +296,7 @@
             </div>
             <div class="row p-5">
                 <div class="col text-center">
-                    <a href="tienda.php"><button class="btn btn-outline-light mt-5 shadow" >Descubrir</button></a>
+                    <a href="index.php?tienda"><button class="btn btn-outline-light mt-5 shadow" >Descubrir</button></a>
                 </div>
             </div>
            
@@ -287,3 +315,92 @@
     <script src="VISTA/js/bootstrap.min.js"></script>
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        // Manejar clic en el botón "Agregar al Carrito"
+        $(document).on('click', '.anadirAlCarrito', function () {
+            var formData = $(this).closest('form').serialize();
+            agregarAlCarrito(formData);
+        });
+
+        // Manejar clic en el botón "Agregar a Favoritos"
+        $(document).on('click', '.anadirAFavoritos', function () {
+            var formData = $(this).closest('form').serialize();
+            agregarAFavoritos(formData);
+        });
+
+        function agregarAlCarrito(formData) {
+            $.ajax({
+                type: 'POST',
+                url: 'MODELO/anadirAlCarrito.php',
+                data: formData,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        console.log('Producto agregado al carrito');
+                        actualizarCarrito();
+                    } else {
+                        console.log('Error: ' + response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function agregarAFavoritos(formData) {
+            $.ajax({
+                type: 'POST',
+                url: 'MODELO/anadirAFavs.php',
+                data: formData,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        console.log('Producto agregado a favoritos');
+                        actualizarFavoritos();
+                    } else {
+                        console.log('Error: ' + response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function actualizarCarrito() {
+            $.ajax({
+                url: 'MODELO/obtenerCarrito.php',
+                type: 'GET',
+                dataType: 'html',
+                success: function(data) {
+                    console.log('Información del carrito actualizada:');
+                    $('#divCarrito').html(data);
+                    $('#divCarritoResp').html(data);
+                },
+                error: function() {
+                    console.log('Error al obtener la información del carrito.');
+                }
+            });
+        }
+
+        function actualizarFavoritos() {
+            $.ajax({
+                url: 'MODELO/obtenerFavs.php',
+                type: 'GET',
+                dataType: 'html',
+                success: function(data) {
+                    console.log('Información de favoritos actualizada:');
+                    $('#divFavs').html(data);
+                    $('#divFavsResp').html(data);
+                    divCarritoResp
+                },
+                error: function() {
+                    console.log('Error al obtener la información de favoritos.');
+                }
+            });
+        }
+    });
+</script>
+
