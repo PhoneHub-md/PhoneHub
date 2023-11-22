@@ -61,23 +61,23 @@
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                        <?php
-                        if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
-                            echo "<ul>";
-                            foreach ($_SESSION['carrito'] as  $productoId => $producto) {
-                                echo "<li>";
-                                echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
-                                echo "<form method='post' action='MODELO/eliminarDelCarrito.php'>";
-                                echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
-                                echo "<button type='submit'>Borrar</button>";
-                                echo "</form>";
-                                echo "</li>";
+                            <?php
+                            if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
+                                echo "<ul>";
+                                foreach ($_SESSION['carrito'] as  $productoId => $producto) {
+                                    echo "<li>";
+                                    echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
+                                    echo "<form method='post' action='MODELO/eliminarDelCarrito.php'>";
+                                    echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
+                                    echo "<button type='submit'>Borrar</button>";
+                                    echo "</form>";
+                                    echo "</li>";
+                                }
+                                echo "</ul>";
+                            } else {
+                                echo "El carrito está vacío.";
                             }
-                            echo "</ul>";
-                        } else {
-                            echo "El carrito está vacío.";
-                        }
-                        ?>
+                            ?>
                         </div>
                     </div>
                     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos_responsive" aria-labelledby="offcanvasRightLabel">
@@ -86,7 +86,23 @@
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            ...
+                            <?php
+                            if (isset($_SESSION['favoritos']) && !empty($_SESSION['favoritos'])) {
+                                echo "<ul>";
+                                foreach ($_SESSION['favoritos'] as  $productoId => $producto) {
+                                    echo "<li>";
+                                    echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
+                                    echo "<form method='post' action='MODELO/eliminarDeFavs.php'>";
+                                    echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
+                                    echo "<button type='submit'>Borrar</button>";
+                                    echo "</form>";
+                                    echo "</li>";
+                                }
+                                echo "</ul>";
+                            } else {
+                                echo "No tiene productos favoritos.";
+                            }
+                            ?>
                         </div>
                     </div>                             <!--FIN ASIDE CARRITO Y FAVORITOS RESPONSIVE (SOLO MODAL)-->
                 </div>
@@ -238,9 +254,8 @@
                         </div>
                     </div>
                 </div>                          <!--FIN MODAL REGISTRO-->
-            <div class="col   d-flex  align-items-center justify-content-end">   <!--COLUMNA BOTON INICIAR SESION, FAVORITOS Y CARRITO-->
-                            <!--BOTON Y MODAL FAVORITOS-->
-                            <?php                       
+            <div class="col   d-flex  align-items-center justify-content-end">   <!--COLUMNA BOTON INICIAR SESION, FAVORITOS Y CARRITO-->     
+                <?php                       
                 $controladorLogin = new LoginController();
                 $nombreUsuario = $controladorLogin->verificarSesion();
 
@@ -285,7 +300,23 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        ...
+                        <?php
+                        if (isset($_SESSION['favoritos']) && !empty($_SESSION['favoritos'])) {
+                            echo "<ul>";
+                            foreach ($_SESSION['favoritos'] as  $productoId => $producto) {
+                                echo "<li>";
+                                echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
+                                echo "<form method='post' action='MODELO/eliminarDeFavs.php'>";
+                                echo "<input type='hidden' name='idProducto' value='". $productoId . "'>";
+                                echo "<button type='submit'>Borrar</button>";
+                                echo "</form>";
+                                echo "</li>";
+                            }
+                            echo "</ul>";
+                        } else {
+                            echo "No tiene productos favoritos.";
+                        }
+                        ?>
                     </div>
                 </div>              <!--FIN BOTON Y MODAL FAVORITOS-->
                                     

@@ -2,24 +2,21 @@
 
 session_start();
 
-require_once('Conexion.php'); // Ajusta la ruta según tu estructura de archivos
+require_once('Conexion.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar si se enviaron datos de inicio de sesión
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $conexion = Conexion::conexion(); // Utiliza la función de tu clase para obtener la conexión
+        $conexion = Conexion::conexion();
 
-        // Verificar si las credenciales son para el administrador
         if ($email === 'admin' && $password === 'qwerty') {
-            // Credenciales válidas para el administrador
             $_SESSION['admin'] = $email;
             header('Location: ../index.php');
             exit();
         } else {
-            $consulta = "SELECT nombre, contraseña FROM usuario WHERE correo = ?";
+            $consulta = "SELECT * FROM usuario WHERE correo = ?";
             $stmt = $conexion->prepare($consulta);
             $stmt->bind_param('s', $email);
             $stmt->execute();
@@ -27,20 +24,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $resultado = $stmt->get_result();
             $usuario = $resultado->fetch_assoc();
 
-            if ($usuario) {// Verificar la contraseña hash
+            if ($usuario) {
                 if (password_verify($password, $usuario['contraseña'])) {
-                    // Credenciales válidas
+                    $_SESSION['idUser'] = $usuario['idUsuario'];
                     $_SESSION['user'] = $usuario['nombre'];
+
+                    if (!empty($usuario['cartData'])) {
+                        $_SESSION['carrito'] = unserialize($usuario['cartData']);
+                    } else {
+                        $_SESSION['carrito'] = array();
+                    }
+                    if (!empty($usuario['favsData'])) {
+                        $_SESSION['favoritos'] = unserialize($usuario['favsData']);
+                    } else {
+                        $_SESSION['favoritos'] = array();
+                    }
                     header('Location: ../index.php');
                     exit();
                 } else {
-                    // Credenciales inválidas
                     $_SESSION['errorLogin'] = "Contraseña incorrecta";
                     header('Location: ../index.php');
                     exit();
                 }
             } else {
-                // Credenciales inválidas
                 $_SESSION['errorLogin'] = "Correo no registrado";
                 header('Location: ../index.php');
                 exit();
