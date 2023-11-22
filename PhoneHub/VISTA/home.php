@@ -75,6 +75,7 @@
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
                                                         <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
                                                         <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
@@ -114,6 +115,7 @@
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
                                                         <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
                                                         <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
@@ -173,10 +175,11 @@
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
                                                         <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
                                                         <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
-                                                        <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
+                                                        <button type="button" class="btn btn-primary btn-sm anadirAFavoritos">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
                                                                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                                             </svg>
@@ -213,6 +216,7 @@
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
                                                         <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
                                                         <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
@@ -252,6 +256,7 @@
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
                                                         <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
                                                         <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
@@ -313,9 +318,7 @@
     <script src="VISTA/js/hover.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="VISTA/js/bootstrap.min.js"></script>
-</body>
-</html>
-<script>
+    <script>
     $(document).ready(function () {
         // Manejar clic en el botón "Agregar al Carrito"
         $(document).on('click', '.anadirAlCarrito', function () {
@@ -403,4 +406,7 @@
         }
     });
 </script>
+</body>
+</html>
+
 
