@@ -9,9 +9,13 @@ class Producto{
         $this->productos = array();
     }
 
-    public function pedirDatos($marca = null, $precio = null, $orden = null) {
+    public function pedirDatos($marca = null, $precio = null, $orden = null, $buscar = null) {
         $sql = "SELECT * FROM producto WHERE 1";
     
+        if ($buscar !== null) {
+            $sql .= " AND LOWER(titulo) LIKE LOWER(?)";
+        }
+
         if ($marca !== null) {
             $sql .= " AND titulo LIKE ?";
         }
@@ -52,6 +56,11 @@ class Producto{
         if ($marca !== null) {
             $marcaParam = $marca . '%';
             $stmt->bind_param('s', $marcaParam);
+        }
+
+        if ($buscar !== null) {
+            $buscarParam = '%' . strtolower($buscar) . '%';
+            $stmt->bind_param('s', $buscarParam);
         }
     
         $stmt->execute();

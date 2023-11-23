@@ -12,7 +12,7 @@ if (isset($_SESSION['carrito']) || isset($_SESSION['favoritos']) && !isset($_SES
     $conexion = Conexion::conexion();
     $consulta = "UPDATE usuario SET cartData = ?, favsData = ? WHERE idUsuario = ?";
     $stmt = $conexion->prepare($consulta);
-    $stmt->bind_param("sss", $cartData, $favsData, $idUsuario);
+    $stmt->bind_param("ssi", $cartData, $favsData, $idUsuario);
     $stmt->execute();
 
     $stmt->close();

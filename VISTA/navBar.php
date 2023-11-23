@@ -87,9 +87,9 @@
 
                                 <!--SEARCH-->
             <div class="col d-none  d-lg-flex   align-items-center justify-content-center">
-                <form class="d-flex" role="search">
-                    <input style="width: 25em;" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                <form class="d-flex" role="search" action = "MODELO/filtrarTienda.php">
+                    <input name="buscar" style="width: 25em;" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
                 </form>
             </div>              <!--FIN SEARCH-->
 
