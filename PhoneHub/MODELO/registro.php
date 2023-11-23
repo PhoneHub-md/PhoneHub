@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ) {
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
+        $nombreCompleto = $nombre . ' ' . $apellido;
         $email = $_POST['email2'];
         $password1 = $_POST['password1'];
         $password2 = $_POST['password2'];
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Verificar si ya existe un usuario con ese correo
-        $conexion = Conexion::conexion(); // Utiliza la función de tu clase para obtener la conexión
+        $conexion = Conexion::conexion();
         $consultaExistencia = "SELECT * FROM usuario WHERE correo = ?";
         $stmtExistencia = $conexion->prepare($consultaExistencia);
         $stmtExistencia->bind_param('s', $email);
@@ -35,18 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resultadoExistencia = $stmtExistencia->get_result();
 
         if ($resultadoExistencia->num_rows > 0) {
-            // Ya existe un usuario con ese correo
             $_SESSION['errorRegistro'] = "Ya existe un usuario con ese correo";
             header('Location: ../index.php');
             exit();
         }
 
-        // Si llegamos aquí, el correo no existe, podemos registrar al nuevo usuario
         $hashPassword = password_hash($password1, PASSWORD_DEFAULT); // Hash de la contraseña
 
         $consultaRegistro = "INSERT INTO usuario (nombre, correo, contraseña) VALUES (?, ?, ?)";
         $stmtRegistro = $conexion->prepare($consultaRegistro);
-        $stmtRegistro->bind_param('sss', $nombre , $email, $hashPassword);
+        $stmtRegistro->bind_param('sss', $nombreCompleto , $email, $hashPassword);
 
         if ($stmtRegistro->execute()) {
             // Registro exitoso
