@@ -51,24 +51,24 @@
             </div>
             <div class="row p-5 d-none d-md-block">         <!--CARROUSSEL NO RESPONSIVE-->
                 <div class="col p-4">
-                    <div id="carouselExamplee" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselExamplee" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">   <!--PRIMEROS 3 PRODUCTOS-->
-                                <div class="row w-75 ">
+                                <div class="row">
                                     <?php 
                                     $contador = 0;
                                     foreach ($novedades as $producto): 
                                         if ($contador < 3):
                                     ?>
                                         
-                                        <div class="col ">
+                                        <div class="col">
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col d-flex flex-column">
+                                                <div class="col d-flex flex-column text-center">
                                                     <span class="p-1"><?php echo $producto['titulo']; ?></span>
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
@@ -96,7 +96,7 @@
                                 </div>
                             </div>                  <!--FIN PRIMEROS 3 PRODUCTOS-->
 
-                            <div class="carousel-item" data-bs-interval="5000">   <!--SEGUNDOS 3 PRODUCTOS-->
+                            <div class="carousel-item " data-bs-interval="5000">   <!--SEGUNDOS 3 PRODUCTOS-->
                                 <div class="row">
                                     <?php 
                                     $contador = 0;
@@ -105,12 +105,12 @@
                                     ?>
                                         <div class="col">
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col d-flex flex-column">
+                                                <div class="col d-flex flex-column text-center">
                                                     <span class="p-1"><?php echo $producto['titulo']; ?></span>
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
@@ -140,11 +140,11 @@
                                                   <!--FIN SEGUNDOS 3 PRODUCTOS-->
                           
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExamplee" data-bs-slide="prev">
+                        <button style="height: 2em; margin-top:5em" class="carousel-control-prev" type="button" data-bs-target="#carouselExamplee" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExamplee" data-bs-slide="next">
+                        <button style="height: 2em; margin-top:5em" class="carousel-control-next" type="button" data-bs-target="#carouselExamplee" data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
@@ -154,7 +154,7 @@
 
             <div class="row p-5 d-md-none">     <!--CARROUSSEL RESPONSIVE-->
                 <div class="col p-4">
-                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselExample" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">    <!--PRIMEROS 2 PRODUCTOS-->
                                 <div class="row">
@@ -165,12 +165,12 @@
                                     ?>
                                         <div class="col">
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col d-flex flex-column">
+                                                <div class="col d-flex flex-column text-center">
                                                     <span class="p-1"><?php echo $producto['titulo']; ?></span>
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
@@ -206,12 +206,12 @@
                                     ?>
                                         <div class="col">
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col d-flex flex-column">
+                                                <div class="col d-flex flex-column text-center">
                                                     <span class="p-1"><?php echo $producto['titulo']; ?></span>
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
@@ -246,12 +246,12 @@
                                     ?>
                                         <div class="col">
                                             <div class="row">
-                                                <div class="col">
+                                                <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col d-flex flex-column">
+                                                <div class="col d-flex flex-column text-center">
                                                     <span class="p-1"><?php echo $producto['titulo']; ?></span>
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
