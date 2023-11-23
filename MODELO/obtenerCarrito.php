@@ -7,7 +7,7 @@ if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
     echo "<ul>";
     foreach ($_SESSION['carrito'] as $productoId => $producto) {
         echo "<li>";
-        echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'];
+        echo "Titulo: " . $producto['titulo'] . ", Precio: " . $producto['precio'] . "€";
         echo "<form>";
         echo "<input type='hidden' name='idProducto' value='" . $productoId . "'>";
         echo "<img src='" . $producto['imagen'] . "'></img>";

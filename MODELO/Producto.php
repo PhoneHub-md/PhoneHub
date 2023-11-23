@@ -9,19 +9,63 @@ class Producto{
         $this->productos = array();
     }
 
-    public function pedirDatos(){
-        $sql = "SELECT * FROM producto";
+    public function pedirDatos($marca = null, $precio = null, $orden = null) {
+        $sql = "SELECT * FROM producto WHERE 1";
+    
+        if ($marca !== null) {
+            $sql .= " AND titulo LIKE ?";
+        }
+    
+        if ($precio !== null) {
+            switch ($precio) {
+                case 1:
+                    $sql .= " AND precio BETWEEN 100 AND 250";
+                    break;
+                case 2:
+                    $sql .= " AND precio BETWEEN 250 AND 400";
+                    break;
+                case 3:
+                    $sql .= " AND precio BETWEEN 400 AND 650";
+                    break;
+                case 4:
+                    $sql .= " AND precio BETWEEN 650 AND 800";
+                    break;
+                case 5:
+                    $sql .= " AND precio > 800";
+                    break;
+            }
+        }
+    
+        if ($orden !== null) {
+            switch ($orden) {
+                case 1:
+                    $sql .= " ORDER BY precio ASC";
+                    break;
+                case 2:
+                    $sql .= " ORDER BY precio DESC";
+                    break;
+            }
+        }
+    
         $stmt = $this->db->prepare($sql);
+    
+        if ($marca !== null) {
+            $marcaParam = $marca . '%';
+            $stmt->bind_param('s', $marcaParam);
+        }
+    
         $stmt->execute();
-
+    
         $result = $stmt->get_result();
-
+    
+        $this->productos = [];
+    
         while($row = $result->fetch_assoc()){
             $this->productos[] = $row;
         }
-
+    
         $stmt->close();
-
+    
         return $this->productos;
     }
 

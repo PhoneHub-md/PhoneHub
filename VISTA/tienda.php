@@ -20,32 +20,33 @@
     <div class="container-fluid">
         <div class="row p-3  mb-5 mt-lg-5">
             <div class=" d-none d-lg-flex col-lg-5 col-xl-6">
-        
             </div>
-            <div class="col d-flex flex-row justify-content-center justify-content-lg-end">
-                <select class="form-select w-25" aria-label="Default select example">
-                    <option selected>Precio</option>
-                    <option value="1">100€-250€</option>
-                    <option value="2">250€-400€</option>
-                    <option value="3">400€-650€</option>
-                    <option value="3">650€-800€</option>
-                    <option value="3">+800€</option>
-                  </select>
-                <select class="form-select w-25 " aria-label="Default select example">
-                    <option selected>Marca</option>
-                    <option value="1">Apple</option>
-                    <option value="2">Oppo</option>
-                    <option value="3">Xiaomi</option>
-                    <option value="3">Samsung</option>
-                    <option value="3">Huawei</option>
-                  </select>
-                  <select class="form-select w-25" aria-label="Default select example">
-                    <option selected>Ordenar</option>
-                    <option value="1">Precio ascendente</option>
-                    <option value="2">Precio descendente</option>
-                  </select>
-                  <button class="btn btn-outline-dark  ms-3">Aplicar</button>
-            </div>
+            <form method="get" action="MODELO/filtrarTienda.php">
+                <div class="col d-flex flex-row justify-content-center justify-content-lg-end">
+                    <select name="precio" class="form-select w-25" aria-label="Default select example">
+                        <option selected>Precio</option>
+                        <option value="1">100€-250€</option>
+                        <option value="2">250€-400€</option>
+                        <option value="3">400€-650€</option>
+                        <option value="4">650€-800€</option>
+                        <option value="5">+800€</option>
+                    </select>
+                    <select name="marca" class="form-select w-25" aria-label="Default select example">
+                        <option selected>Marca</option>
+                        <option value="IPhone">IPhone</option>
+                        <option value="Oppo">Oppo</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Huawei">Huawei</option>
+                    </select>
+                    <select name="orden" class="form-select w-25" aria-label="Default select example">
+                        <option selected>Ordenar</option>
+                        <option value="1">Precio ascendente</option>
+                        <option value="2">Precio descendente</option>
+                    </select>
+                    <button type="submit" class="btn btn-outline-dark ms-3">Aplicar</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="container">
@@ -53,22 +54,30 @@
             <?php
             require_once "MODELO/Conexion.php";
             require_once "CONTROL/ProductoController.php";
-
+            
+            $marca = isset($_GET['marca']) && $_GET['marca'] !=="Marca"  ? $_GET['marca'] : null;
+            $precio = isset($_GET['precio']) && $_GET['precio'] !=="Precio" ? $_GET['precio'] : null;
+            $orden = isset($_GET['orden']) && $_GET['orden'] !=="Orden" ? $_GET['orden'] : null;
+            
             $controlador = new ProductoController();
-            $moviles = $controlador->buscarDatos();
+            $moviles = $controlador->buscarDatos($marca, $precio, $orden);
 
             foreach ($moviles as $producto) {
             ?>
                 <div class="col-6 col-md-4 col-xl-3 mt-3 mb-5">
                     <div class="card d-flex align-items-center bg-body  border-0">
                         <img style="width: 13em;" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>" class="card-img-top"  alt="..."></img>
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column text-center">
                             <h5 class="card-title"><?php echo $producto['titulo']; ?></h5>
                             <p class="card-text"><?php echo $producto['descripcion']; ?></p>
-                            <p class="card-text"><?php echo $producto['precio']; ?> €</p>
+                            <p class="card-text fw-bold"><?php echo $producto['precio']; ?> €</p>
                             <?php
                             if(isset($_SESSION['admin'])){
-                                echo '<button type="submit" class="btn btn-primary">Editar</button>';
+                                echo '<button type="submit" class="btn btn-danger">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                                        </svg>
+                                        </button>';
                             }else{
                             ?>
                                 <form>
