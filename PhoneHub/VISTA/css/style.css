@@ -73,11 +73,6 @@ nav{
     color: burlywood;
 }
 
-@media screen and (max-width: 600px) {
-    #modal_inicio_sesion{
-        display: block; /* Muestra el elemento en pantallas pequeñas */
-    }
-}
 
 
 

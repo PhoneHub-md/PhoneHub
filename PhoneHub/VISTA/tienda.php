@@ -60,8 +60,8 @@
             foreach ($moviles as $producto) {
             ?>
                 <div class="col-6 col-md-4 col-xl-3 mt-3 mb-5">
-                    <div class="card">
-                        <img src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>" class="card-img-top" alt="..."></img>
+                    <div class="card d-flex align-items-center bg-body  border-0">
+                        <img style="width: 13em;" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>" class="card-img-top"  alt="..."></img>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $producto['titulo']; ?></h5>
                             <p class="card-text"><?php echo $producto['descripcion']; ?></p>

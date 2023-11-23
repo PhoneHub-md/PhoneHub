@@ -17,9 +17,10 @@
         </a>
     </div>
 
-    <div class="container-fluid fondo_4 d-flex flex-column ">      <!--FOTO CONTAINER-->
+    <div class="container-fluid fondo_4 d-flex flex-column ">
+      <div style="height: 6em;" class="row"></div>      <!--FOTO CONTAINER-->
         
-        <div class="row ">
+        <div class="row mb-5">
             <div class="col">
                 <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold"> ¡CONTÁCTANOS!</p>
             </div>

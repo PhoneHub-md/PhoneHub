@@ -54,14 +54,14 @@
                     <div id="carouselExamplee" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">   <!--PRIMEROS 3 PRODUCTOS-->
-                                <div class="row">
+                                <div class="row w-75 ">
                                     <?php 
                                     $contador = 0;
                                     foreach ($novedades as $producto): 
                                         if ($contador < 3):
                                     ?>
                                         
-                                        <div class="col">
+                                        <div class="col ">
                                             <div class="row">
                                                 <div class="col">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
