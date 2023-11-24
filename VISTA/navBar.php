@@ -34,6 +34,9 @@
                         </svg>
                     </button>
                     <ul class="dropdown-menu bg-body-secondary">      <!--DROPDOWN MENU RESPONSIVE-->
+                        <?php
+                        if (!isset($_SESSION['admin'])) {
+                        ?>
                         <li class="d-flex flex-row justify-content-center">
                             <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrito_responsive" aria-controls="offcanvasRight">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag m-1" viewBox="0 0 16 16">
@@ -44,11 +47,14 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                 </svg>
-                            </button>  
+                            </button>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        <?php
+                        }
+                        ?>
                         <li><a class="dropdown-item text-dark" href="index.php?home">Home</a></li>
                         <li><a class="dropdown-item text-dark" href="index.php?tienda">Tienda</a></li>
                         <li><a class="dropdown-item text-dark" href="index.php?nosotros">Nosotros</a></li>
@@ -259,11 +265,17 @@
                 }
                 ?>          
                                                   <!--BOTON Y MODAL FAVORITOS-->
-                <button class="btn btn-outline-dark border border-0 d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos" aria-controls="offcanvasRight">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
-                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                    </svg>
-                </button>
+                <?php
+                if (!isset($_SESSION['admin'])) {
+                ?>
+                    <button class="btn btn-outline-dark border border-0 d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos" aria-controls="offcanvasRight">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                    </button>
+                <?php
+                }
+                ?>
                 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos" aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header fondo_3">
                         <h5 style="text-shadow: black 0.1em 0.1em 0.2em" class="offcanvas-title text-white fw-semibold" id="offcanvasRightLabel">FAVORITOS</h5>
@@ -316,12 +328,17 @@
                     </div>
                 </div>                      <!--FIN MODAL PERFIL-->
                                     <!--BOTON Y MODAL CARRITO-->
-                <button class="btn btn-outline-dark border border-0 d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="offcanvasRight">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag m-1" viewBox="0 0 16 16">
-                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                    </svg>
-                </button>
-
+                <?php
+                if (!isset($_SESSION['admin'])) {
+                ?>
+                    <button class="btn btn-outline-dark border border-0 d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrito" aria-controls="offcanvasRight">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag m-1" viewBox="0 0 16 16">
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg>
+                    </button>
+                <?php
+                }
+                ?>
                 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="carrito" aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header fondo_3">
                         <h5 style="text-shadow: black 0.1em 0.1em 0.2em" class="offcanvas-title text-white fw-semibold" id="offcanvasRightLabel">CARRITO</h5>
@@ -364,11 +381,13 @@
 <script src="VISTA/js/form_registro.js"></script>
 <script src="VISTA/js/modal.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="VISTA/js/hover.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="VISTA/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
         // Manejar clic en el botón "Agregar al Carrito"
         $(document).on('click', '.eliminarDelCarrito', function () {
-            
             var formData = $(this).closest('form').serialize();
             eliminarDelCarrito(formData);
         });
@@ -377,6 +396,18 @@
         $(document).on('click', '.eliminarDeFavoritos', function () {
             var formData = $(this).closest('form').serialize();
             eliminarDeFavoritos(formData);
+        });
+
+        // Manejar clic en el botón "Agregar al Carrito"
+        $(document).on('click', '.anadirAlCarrito', function () {
+            var formData = $(this).closest('form').serialize();
+            agregarAlCarrito(formData);
+        });
+
+        // Manejar clic en el botón "Agregar a Favoritos"
+        $(document).on('click', '.anadirAFavoritos', function () {
+            var formData = $(this).closest('form').serialize();
+            agregarAFavoritos(formData);
         });
 
         function eliminarDelCarrito(formData) {
@@ -408,6 +439,79 @@
                 success: function (response) {
                     if (response.status === 'success') {
                         console.log('Producto eliminado de favoritos');
+                        actualizarFavoritos();
+                    } else {
+                        console.log('Error: ' + response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function actualizarCarrito() {
+            $.ajax({
+                url: 'MODELO/obtenerCarrito.php',
+                type: 'GET',
+                dataType: 'html',
+                success: function(data) {
+                    console.log('Información del carrito actualizada:');
+                    $('#divCarrito').html(data);
+                    $('#divCarritoResp').html(data);
+                },
+                error: function() {
+                    console.log('Error al obtener la información del carrito.');
+                }
+            });
+        }
+
+        function actualizarFavoritos() {
+            $.ajax({
+                url: 'MODELO/obtenerFavs.php',
+                type: 'GET',
+                dataType: 'html',
+                success: function(data) {
+                    console.log('Información de favoritos actualizada:');
+                    $('#divFavs').html(data);
+                    $('#divFavsResp').html(data);
+                    divCarritoResp
+                },
+                error: function() {
+                    console.log('Error al obtener la información de favoritos.');
+                }
+            });
+        }
+
+        function agregarAlCarrito(formData) {
+            $.ajax({
+                type: 'POST',
+                url: 'MODELO/anadirAlCarrito.php',
+                data: formData,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        console.log('Producto agregado al carrito');
+                        actualizarCarrito();
+                    } else {
+                        console.log('Error: ' + response.message);
+                    }
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function agregarAFavoritos(formData) {
+            $.ajax({
+                type: 'POST',
+                url: 'MODELO/anadirAFavs.php',
+                data: formData,
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        console.log('Producto agregado a favoritos');
                         actualizarFavoritos();
                     } else {
                         console.log('Error: ' + response.message);
