@@ -72,7 +72,7 @@
                             <h5 class="card-title"><?php echo $producto['titulo']; ?></h5>
                             <p class="card-text"><?php echo $producto['descripcion']; ?></p>
                             <p class="card-text fw-bold"><?php echo $producto['precio']; ?> €</p>
-                            <form method = "post" action="MODELO/eliminarProducto">
+                            <form method = "post" action="MODELO/eliminarProducto.php">
                                 <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                 <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                 <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">

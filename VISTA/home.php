@@ -54,21 +54,21 @@
                     <div id="carouselExamplee" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">   <!--PRIMEROS 3 PRODUCTOS-->
-                                <div class="row">
+                                <div class="row  justify-content-around">
                                     <?php 
                                     $contador = 0;
                                     foreach ($novedades as $producto): 
                                         if ($contador < 3):
                                     ?>
                                         
-                                        <div class="col">
+                                        <div class="col-2 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col d-flex flex-column text-center">
+                                                <div class="col d-flex flex-column text-center ">
                                                     <span class="p-1"><?php echo $producto['titulo']; ?></span>
                                                     <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
@@ -109,13 +109,13 @@
                             </div>                  <!--FIN PRIMEROS 3 PRODUCTOS-->
 
                             <div class="carousel-item " data-bs-interval="5000">   <!--SEGUNDOS 3 PRODUCTOS-->
-                                <div class="row">
+                                <div class="row justify-content-around">
                                     <?php 
                                     $contador = 0;
                                     foreach ($novedades as $producto): 
                                         if ($contador >= 3):
                                     ?>
-                                        <div class="col">
+                                        <div class="col-2 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
@@ -181,13 +181,13 @@
                     <div id="carouselExample" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">    <!--PRIMEROS 2 PRODUCTOS-->
-                                <div class="row">
+                                <div class="row justify-content-around">
                                     <?php 
                                     $contador = 0;
                                     foreach ($novedades as $producto): 
                                         if ($contador < 2):
                                     ?>
-                                        <div class="col">
+                                        <div class="col-4 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
@@ -234,13 +234,13 @@
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="5000">      <!--SEGUNDOS 2 PRODUCTOS-->
-                                <div class="row">
+                                <div class="row justify-content-around">
                                     <?php 
                                     $contador = 0;
                                     foreach ($novedades as $producto): 
                                         if ($contador >= 2 && $contador <4):
                                     ?>
-                                        <div class="col">
+                                        <div class="col-4 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
@@ -286,13 +286,13 @@
                             </div>
 
                             <div class="carousel-item" data-bs-interval="5000">      <!--TERCEROS 2 PRODUCTOS-->
-                                <div class="row">
+                                <div class="row justify-content-around">
                                     <?php 
                                     $contador = 0;
                                     foreach ($novedades as $producto): 
                                         if ($contador >= 4):
                                     ?>
-                                        <div class="col">
+                                        <div class="col-4 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">

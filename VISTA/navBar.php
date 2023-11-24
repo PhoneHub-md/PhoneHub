@@ -56,9 +56,9 @@
                     </ul>                   <!--FIN DROPDOWN MENU RESPONSIVE-->
                                           <!--ASIDE CARRITO Y FAVORITOS RESPONSIVE (SOLO MODAL)-->
                     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="carrito_responsive" aria-labelledby="offcanvasRightLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasRightLabel">CARRITO RESPONSIVE</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <div class="offcanvas-header fondo_3">
+                            <h5 style="text-shadow: black 0.1em 0.1em 0.2em" class="offcanvas-title text-white fw-semibold" id="offcanvasRightLabel">CARRITO</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body" id="divCarritoResp">
                             <?php
@@ -67,9 +67,9 @@
                         </div>
                     </div>
                     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos_responsive" aria-labelledby="offcanvasRightLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasRightLabel">FAVORITOS RESPONSIVE</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <div class="offcanvas-header fondo_3">
+                            <h5 style="text-shadow: black 0.1em 0.1em 0.2em" class="offcanvas-title text-white fw-semibold" id="offcanvasRightLabel">FAVORITOS</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body" id="divFavsResp">
                             <?php
@@ -89,7 +89,7 @@
             <div class="col d-none  d-lg-flex   align-items-center justify-content-center">
                 <form class="d-flex" role="search" action = "MODELO/filtrarTienda.php">
                     <input name="buscar" style="width: 25em;" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Buscar</button>
+                    <button class="btn btn-outline-dark" type="submit"><span class="fw-semibold">Buscar</span></button>
                 </form>
             </div>              <!--FIN SEARCH-->
 
@@ -251,8 +251,8 @@
                 <?php
                 } else {
                 ?>
-                    <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#modal_inicio_sesion">
-                        Iniciar sesión
+                    <button type="button" class="btn btn-outline-dark m-1" data-bs-toggle="modal" data-bs-target="#modal_inicio_sesion">
+                       <span class="fw-semibold">Iniciar sesión</span> 
                     </button>
 
                 <?php
@@ -265,9 +265,9 @@
                     </svg>
                 </button>
                 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">FAVORITOS</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <div class="offcanvas-header fondo_3">
+                        <h5 style="text-shadow: black 0.1em 0.1em 0.2em" class="offcanvas-title text-white fw-semibold" id="offcanvasRightLabel">FAVORITOS</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body" id="divFavs">
                         <?php
@@ -278,24 +278,38 @@
                                     
                                                 <!--MODAL PERFIL-->
 
-                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="perfil" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">PERFIL</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <div class="offcanvas offcanvas-end h-50" data-bs-scroll="true" tabindex="-1" id="perfil" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header fondo_3">
+                        <h5 style="text-shadow: black 0.1em 0.1em 0.2em" class="offcanvas-title text-white fw-semibold" id="offcanvasRightLabel">PERFIL</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
+                    <div class="offcanvas-body bg-body-secondary">
                         <?php
                         if ($nombreUsuario) {
                             ?>
-                                <p><?= $nombreUsuario ?></p>
-                                <a href="MODELO/logout.php">
-                                    <button>Cerrar Sesion</button>
-                                </a>
+                            <div class="row mt-5">
+                                <div class="col"></div>
+                                <div class="col d-flex flex-row align-items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person m-1" viewBox="0 0 16 16">
+                                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                                    </svg>
+                                    <span class="fw-semibold fs-5"><?= $nombreUsuario ?></span>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col"></div>
+                                <div class="col-6 d-flex justify-content-center">
+                                    <a href="MODELO/logout.php">
+                                        <button class="btn btn-outline-dark"><span class="fw-semibold">Cerrar Sesion</span></button>
+                                    </a>
+                                </div>
+                                <div class="col"></div>
+                            </div>
                             <?php
                             } else {
                             ?>
                                 <p>Inicia sesion</p>
-    
                             <?php
                             }
                         ?>
@@ -309,9 +323,9 @@
                 </button>
 
                 <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="carrito" aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">CARRITO</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <div class="offcanvas-header fondo_3">
+                        <h5 style="text-shadow: black 0.1em 0.1em 0.2em" class="offcanvas-title text-white fw-semibold" id="offcanvasRightLabel">CARRITO</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body" id="divCarrito">
                     <?php
@@ -354,6 +368,7 @@
     $(document).ready(function () {
         // Manejar clic en el botón "Agregar al Carrito"
         $(document).on('click', '.eliminarDelCarrito', function () {
+            
             var formData = $(this).closest('form').serialize();
             eliminarDelCarrito(formData);
         });
