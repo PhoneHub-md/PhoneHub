@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <?php
             require_once "MODELO/Conexion.php";
             require_once "CONTROL/ProductoController.php";
@@ -65,13 +65,39 @@
 
             foreach ($moviles as $producto) {
             ?>
-                <div class="col-6 col-md-4 col-xl-3 mt-3 mb-5">
+                <div class="col-10 col-md-6 col-lg-4 col-xxl-3 mt-3 mb-5">
                     <div class="card d-flex align-items-center bg-body  border-0">
                         <img style="width: 13em;" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>" class="card-img-top"  alt="..."></img>
                         <div class="card-body d-flex flex-column text-center">
-                            <h5 class="card-title"><?php echo $producto['titulo']; ?></h5>
-                            <p class="card-text"><?php echo $producto['descripcion']; ?></p>
-                            <p class="card-text fw-bold"><?php echo $producto['precio']; ?> €</p>
+                            <div class="row m-1 p-1">
+                                <div class="col d-flex justify-content-center">
+                                    <h5 class="card-title"><?php echo $producto['titulo']; ?></h5>
+                                </div>
+                            </div>
+                            <div class="row m-1 p-1">
+                                <div class="col">
+                                    <p class="card-text word-wrap text-body-secondary ">
+                                    <?php 
+                                        $maxCaracteres = 50; // Cambia este valor al máximo de caracteres permitidos
+
+                                        $descripcion = $producto['descripcion'];
+
+                                        // Verificar si la longitud de la descripción es mayor al límite
+                                        if (strlen($descripcion) > $maxCaracteres) {
+                                            // Si es mayor, truncar el texto y agregar puntos suspensivos
+                                            $descripcion = substr($descripcion, 0, $maxCaracteres) . '...';
+                                        }
+
+                                        echo $descripcion;
+                                    ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row m-1 p-1">
+                                <div class="col">
+                                    <p class="card-text fw-bold"><?php echo $producto['precio']; ?> €</p>
+                                </div>
+                            </div>
                             <form method = "post" action="MODELO/eliminarProducto.php">
                                 <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                 <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
@@ -86,9 +112,9 @@
                                             </button>';
                                 }else{
                                 ?>
-                                <button type="button" class="btn btn-primary anadirAlCarrito">Agregar al Carrito</button>
-                                <button type="button" class="btn btn-primary btn-sm anadirAFavoritos" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                <button style="margin-left: 60px;" type="button" class="btn btn-dark anadirAlCarrito "><span>Añadir al carrito</span></button>
+                                <button type="button" class="btn btn-outline-danger border border-0 anadirAFavoritos m-1" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
                                         <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                     </svg>
                                 </button>

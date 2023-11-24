@@ -49,7 +49,7 @@
                     <span class="fs-1">Últimas novedades</span>
                 </div>
             </div>
-            <div class="row p-5 d-none d-md-block">         <!--CARROUSSEL NO RESPONSIVE-->
+            <div class="row p-5 d-none d-lg-block">         <!--CARROUSSEL NO RESPONSIVE-->
                 <div class="col p-4">
                     <div id="carouselExamplee" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -61,7 +61,7 @@
                                         if ($contador < 3):
                                     ?>
                                         
-                                        <div class="col-2 bg-body rounded">
+                                        <div class="col-3 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
@@ -69,8 +69,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center ">
-                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
+                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
@@ -78,16 +78,16 @@
                                                         <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
-                                                            echo '<button type="submit" class="btn btn-danger">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                            echo '<button type="submit" class="btn btn-danger m-1">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                                                         <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                                                                     </svg>
                                                                     </button>';
                                                         }else{
                                                             ?>
-                                                            <button type="button" class="btn btn-dark anadirAlCarrito">Agregar al Carrito</button>
-                                                            <button type="button" class="btn btn-dark btn-sm anadirAFavoritos" >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                            <button type="button" class="btn btn-dark anadirAlCarrito m-1 ">Agregar al Carrito</button>
+                                                            <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                                                 </svg>
                                                             </button>
@@ -115,7 +115,7 @@
                                     foreach ($novedades as $producto): 
                                         if ($contador >= 3):
                                     ?>
-                                        <div class="col-2 bg-body rounded">
+                                        <div class="col-3 bg-body rounded ">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
                                                     <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
@@ -123,8 +123,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
+                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                                         <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
@@ -132,16 +132,16 @@
                                                         <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
-                                                            echo '<button type="submit" class="btn btn-danger">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                            echo '<button type="submit" class="btn btn-danger m-1">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                                                         <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                                                                     </svg>
                                                                     </button>';
                                                         }else{
                                                             ?>
-                                                            <button type="button" class="btn btn-dark anadirAlCarrito">Agregar al Carrito</button>
-                                                            <button type="button" class="btn btn-dark btn-sm anadirAFavoritos" >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                            <button type="button" class="btn btn-dark anadirAlCarrito m-1">Agregar al Carrito</button>
+                                                            <button type="button" class="btn btn-outline-danger border border-0 anadirAFavoritos m-1" >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                                                 </svg>
                                                             </button>
@@ -164,11 +164,11 @@
                                                   <!--FIN SEGUNDOS 3 PRODUCTOS-->
                           
                         </div>
-                        <button style="height: 2em; margin-top:5em" class="carousel-control-prev" type="button" data-bs-target="#carouselExamplee" data-bs-slide="prev">
+                        <button style="height: 2em; margin-top:8em" class="carousel-control-prev" type="button" data-bs-target="#carouselExamplee" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button style="height: 2em; margin-top:5em" class="carousel-control-next" type="button" data-bs-target="#carouselExamplee" data-bs-slide="next">
+                        <button style="height: 2em; margin-top:8em" class="carousel-control-next" type="button" data-bs-target="#carouselExamplee" data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
@@ -176,13 +176,13 @@
                 </div>
             </div>                              <!--FIN CARROUSSEL NO RESPONISVE-->
 
-            <div class="row p-5 d-md-none">     <!--CARROUSSEL RESPONSIVE-->
+            <div class="row p-5 d-lg-none">     <!--CARROUSSEL RESPONSIVE-->
                 <div class="col p-4">
                     <div id="carouselExample" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">    <!--PRIMEROS 2 PRODUCTOS-->
                                 <div class="row justify-content-around">
-                                    <?php 
+                                    <?php
                                     $contador = 0;
                                     foreach ($novedades as $producto): 
                                         if ($contador < 2):
@@ -195,8 +195,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
+                                                    <span class="p-1 "><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
@@ -204,16 +204,16 @@
                                                         <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
-                                                            echo '<button type="submit" class="btn btn-danger">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                            echo '<button type="submit" class="btn btn-danger m-1">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                                                         <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                                                                     </svg>
                                                                     </button>';
                                                         }else{
                                                             ?>
-                                                            <button type="button" class="btn btn-dark anadirAlCarrito">Agregar al Carrito</button>
-                                                            <button type="button" class="btn btn-dark btn-sm anadirAFavoritos" >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                            <button type="button" class="btn btn-dark anadirAlCarrito m-1">Agregar al Carrito</button>
+                                                            <button type="button" class="btn btn-outline-danger border border-0 anadirAFavoritos m-1" >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                                                 </svg>
                                                             </button>
@@ -248,8 +248,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
+                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
@@ -257,16 +257,16 @@
                                                         <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
-                                                            echo '<button type="submit" class="btn btn-danger">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                            echo '<button type="submit" class="btn btn-danger m-1">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                                                         <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                                                                     </svg>
                                                                     </button>';
                                                         }else{
                                                             ?>
-                                                            <button type="button" class="btn btn-dark anadirAlCarrito">Agregar al Carrito</button>
-                                                            <button type="button" class="btn btn-dark btn-sm anadirAFavoritos" >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                            <button type="button" class="btn btn-dark anadirAlCarrito m-1">Agregar al Carrito</button>
+                                                            <button type="button" class="btn btn-outline-danger border border-0 anadirAFavoritos m-1" >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                                                 </svg>
                                                             </button>
@@ -300,8 +300,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1 fw-bold"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
+                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
                                                     <form>
                                                         <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
                                                         <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
@@ -309,16 +309,16 @@
                                                         <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
-                                                            echo '<button type="submit" class="btn btn-danger">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                            echo '<button type="submit" class="btn btn-danger m-1">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                                                         <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                                                                     </svg>
                                                                     </button>';
                                                         }else{
                                                             ?>
-                                                            <button type="button" class="btn btn-dark anadirAlCarrito">Agregar al Carrito</button>
-                                                            <button type="button" class="btn btn-dark btn-sm anadirAFavoritos" >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
+                                                            <button type="button" class="btn btn-dark anadirAlCarrito m-1">Agregar al Carrito</button>
+                                                            <button type="button" class="btn btn-outline-danger border border-0 anadirAFavoritos m-1" >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                                                 </svg>
                                                             </button>
@@ -337,11 +337,11 @@
                                 </div>
                             </div>
                         </div>
-                        <button style="height: 2em" class="carousel-control-prev mt-5" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <button style="height: 2em; margin-top:8em" class="carousel-control-prev " type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button style="height: 2em" class="carousel-control-next mt-5" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <button style="height: 2em; margin-top:8em" class="carousel-control-next " type="button" data-bs-target="#carouselExample" data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
@@ -371,6 +371,7 @@
             
             
         </div>              <!--FIN FOTO CONTAINER--><!--FIN CONTAINER CARROUSEL-->
+        <?php include 'footer.php'; ?>
 
         
          
