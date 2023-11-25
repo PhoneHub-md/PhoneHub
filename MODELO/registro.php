@@ -13,16 +13,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         isset($_POST['password1']) &&
         isset($_POST['password2'])
     ) {
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $nombreCompleto = $nombre . ' ' . $apellido;
-        $email = $_POST['email2'];
-        $password1 = $_POST['password1'];
-        $password2 = $_POST['password2'];
+        $nombre = trim($_POST['nombre']);
+        $apellido = trim($_POST['apellido']);
+        $email = trim($_POST['email2']);
+        $password1 = trim($_POST['password1']);
+        $password2 = trim($_POST['password2']);
+
+        if (empty($nombre) || empty($apellido) || empty($email) || empty($password1) || empty($password2)) {
+            $_SESSION['errorRegistro'] = "Todos los campos son obligatorios";
+            header('Location: ../index.php');
+            exit();
+        }
 
         // Verificar si las contraseñas coinciden
         if ($password1 !== $password2) {
             $_SESSION['errorRegistro'] = "Las contraseñas no coinciden";
+            header('Location: ../index.php');
+            exit();
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['errorRegistro'] = "El formato del correo electrónico no es válido";
             header('Location: ../index.php');
             exit();
         }

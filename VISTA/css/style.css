@@ -51,8 +51,22 @@ a:link, a:visited, a:active {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    background-image: url(../img/fondo_formulario.jpeg);
+    background-image: url(../img/descarga.jpeg);
 }
+.fondo_7{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(../img/fondo_7.jpg);
+}
+.fondo_8{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../img/xiaomi.jpg);
+}
+
+
 
 nav{
     z-index: 9999;   
@@ -71,6 +85,9 @@ nav{
 
 .hover_nav{
     color: burlywood;
+}
+.oscurecer{
+    background: rgba(0, 0, 0, 0.5); 
 }
 
 

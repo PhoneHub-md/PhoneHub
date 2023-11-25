@@ -3,26 +3,34 @@
         <div class="row fondo_3 text-white"> <!--BARRA TELEFONOS-->
 
             <div class="col d-none d-md-flex flex-row align-items-center ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-envelope m-2" viewBox="0 0 16 16">
-                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
-                </svg>
-                <span class="fw-light">marcopulido2091@gmail.com</span>
+                <a href="mailto:marcopulido2091@gmail.com?subject=¡ENTRASTE EN MI TFC!&body=¡GRACIAS! DALE A ENVIAR PARA YO SABER QUE HAS ENTRADO">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-envelope m-2 text-white" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                    </svg>
+                    <span class="fw-light text-white">marcopulido2091@gmail.com</span>
+                </a>
             </div>
             <div class="col d-flex flex-row align-items-center  justify-content-start">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone m-2" viewBox="0 0 16 16">
-                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                </svg>
-                <span class="fw-light"> +34 722 677 154</span>
+                <a href="tel:+123456789">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone m-2 text-white" viewBox="0 0 16 16">
+                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                    </svg>
+                    <span class="fw-light text-white"> +34 123 456 789</span>
+                </a>
             </div>
             <div class="col d-none d-lg-flex"></div>
             <div class="col d-none d-lg-flex"></div>
             <div class="col d-flex flex-row align-items-center justify-content-end">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook m-2" viewBox="0 0 16 16">
+                <a href="https://www.facebook.com/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook m-2 text-white" viewBox="0 0 16 16">
                     <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x m-2" viewBox="0 0 16 16">
+                </a>
+                <a href="https://twitter.com/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x m-2 text-white" viewBox="0 0 16 16">
                     <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
                 </svg>
+                </a>
             </div>
         </div>                              <!--FIN BARRA TELEFONOS-->
         <div class="row bg-body-secondary">                     <!--BARRA LOGO-->
@@ -70,6 +78,7 @@
                             <?php
                             include 'MODELO/obtenerCarrito.php'
                             ?>
+                            
                         </div>
                     </div>
                     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos_responsive" aria-labelledby="offcanvasRightLabel">
@@ -111,8 +120,8 @@
                 });
             </script>';
             }
-            ?>
-            <div class="modal fade fondo_6" id="modal_inicio_sesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            ?>                                  <!--MODAL INICIO SESION-->
+            <div class="modal fade fondo_7" id="modal_inicio_sesion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content bg-secondary bg-opacity-50 rounded">
                             <div class="modal-header d-flex align-items-center justify-content-center">
@@ -144,7 +153,7 @@
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button type="submit" class="btn btn-outline-light shadow-lg">Entrar</button>
+                                                <button type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Entrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
@@ -157,7 +166,7 @@
                                     <span style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white">¿Aún no estás registrado?</span>
                                 </div>
                                 <div class="col d-flex justify-content-center">
-                                    <button id="boton_registro" type="button" class="btn btn-info" data-bs-dismiss="modal" data-bs-target="#modal_registro">¡REGÍSTRATE!</button>
+                                    <button id="boton_registro" type="button" class="btn btn-info fw-semibold" data-bs-dismiss="modal" data-bs-target="#modal_registro">¡REGÍSTRATE!</button>
                                 </div>
 
                             </div>
@@ -178,7 +187,7 @@
                 </script>';
                 }
                 ?>
-                <div class="modal fade fondo_6" id="modal_registro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade fondo_7" id="modal_registro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered ">
                         <div class="modal-content bg-secondary bg-opacity-25 rounded">
 
@@ -194,7 +203,7 @@
                             <form id="registroForm" class="form-floating" method="post" action="MODELO/registro.php">
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" style="height: 40px;" required>
+                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" style="height: 40px;">
                                             <label for="nombre">Nombre</label>
                                         </div>
                                         <div class="col form-floating p-2">
@@ -205,19 +214,19 @@
 
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" name="email2" id="email2" placeholder="" style="height: 40px;" required>
+                                            <input type="text" class="form-control" name="email2" id="email2" placeholder="" style="height: 40px;">
                                             <label for="email2">Correo</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password1" name="password1" class="form-control" placeholder="" aria-describedby="passwordHelpBlock" required>
+                                            <input type="password" id="password1" name="password1" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
                                             <label for="password1">Contraseña</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password2" name="password2" class="form-control" placeholder="" aria-describedby="passwordHelpBlock" required>
+                                            <input type="password" id="password2" name="password2" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
                                             <label for="password2">Repetir contraseña</label>
                                         </div>
                                     </div>
@@ -231,7 +240,7 @@
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button id="registrar" type="submit" class="btn btn-outline-light shadow-lg">Registrar</button>
+                                                <button id="registrar" type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Registrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
@@ -377,7 +386,79 @@
 
         </div>
     </div>
-</nav> <!--FIN NAVBAR NO RESPONSIVE-->
+</nav>                                  <!--FIN NAVBAR NO RESPONSIVE--> 
+
+                                        <!--MODAL PAGO--> 
+<div class="modal fade fondo_7" id="modalPago" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-secondary bg-opacity-50 rounded">
+    <div class="modal-header d-flex align-items-center justify-content-center">
+        <div class="col-7 d-flex justify-content-end">
+            <span style="text-shadow: black 0.1em 0.1em 0.2em" class="fs-2 text-white fw-semibold">PAGO</span>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form id="pagoForm" class="form-floating" method="post" action="">
+            <div class="row m-1 p-1">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="nombrePago" id="nombrePago" placeholder="" style="height: 40px;">
+                    <label for="nombrePago">Nombre</label>
+                </div>
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="apellidoPago" id="apellidoPago" placeholder="" style="height: 40px;">
+                    <label for="apellidoPago">Apellido</label>
+                </div>
+            </div>
+            <div class="row m-1 p-1 ">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="email3" id="email3" placeholder="" style="height: 40px;">
+                    <label for="email3">Correo</label>
+                </div>
+            </div>
+            <div class="row m-1 p-1 ">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="localidad" id="localidad" placeholder="" style="height: 40px;">
+                    <label for="localidad">Localidad</label>
+                </div>
+            </div>
+            <div class="row m-1 p-1">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="calle" id="calle" placeholder="" style="height: 40px;">
+                    <label for="calle">Calle</label>
+                </div>
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="numero" id="numero" placeholder="" style="height: 40px;">
+                    <label for="numero">Número</label>
+                </div>
+            </div>
+            <div class="row m-1 p-1">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="tarjeta" id="tarjeta" placeholder="" style="height: 40px;">
+                    <label for="tarjeta">Tarjeta de crédito</label>
+                </div>
+            </div>
+            <div class="row mt-4 mb-4">
+                <div class="col"></div>
+                <div class="col-6 d-flex justify-content-center">
+                    <div class="row w-100">
+                        <button id="pagar" type="submit" class="btn btn-outline-light shadow-lg fw-semibold"><span>Pagar</span></button>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div id="mensajesValidacion_pagar" class="div"></div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>                                          <!--FIN MODAL PAGO--> 
+                                                
+
+<script src="VISTA/js/validacion_pago_responsive.js"></script>
+<script src="VISTA/js/validacion_pago.js"></script>
 <script src="VISTA/js/form_registro.js"></script>
 <script src="VISTA/js/modal.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -386,13 +467,13 @@
 <script src="VISTA/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
-        // Manejar clic en el botón "Agregar al Carrito"
+        // Manejar clic en el botón "Eliminar del Carrito"
         $(document).on('click', '.eliminarDelCarrito', function () {
             var formData = $(this).closest('form').serialize();
             eliminarDelCarrito(formData);
         });
 
-        // Manejar clic en el botón "Agregar a Favoritos"
+        // Manejar clic en el botón "Eliminar de Favoritos"
         $(document).on('click', '.eliminarDeFavoritos', function () {
             var formData = $(this).closest('form').serialize();
             eliminarDeFavoritos(formData);
@@ -401,13 +482,23 @@
         // Manejar clic en el botón "Agregar al Carrito"
         $(document).on('click', '.anadirAlCarrito', function () {
             var formData = $(this).closest('form').serialize();
-            agregarAlCarrito(formData);
+            var button = $(this);
+            var spinner = button.find('.spinner-border');
+            var buttonText = button.find('.btn-text');
+            buttonText.hide();
+            spinner.show();
+            agregarAlCarrito(formData, spinner, buttonText);
         });
 
         // Manejar clic en el botón "Agregar a Favoritos"
         $(document).on('click', '.anadirAFavoritos', function () {
             var formData = $(this).closest('form').serialize();
-            agregarAFavoritos(formData);
+            var button = $(this);
+            var spinner = button.find('.spinner-border');
+            var buttonText = button.find('.btn-text');
+            buttonText.hide();
+            spinner.show();
+            agregarAFavoritos(formData, spinner, buttonText);
         });
 
         function eliminarDelCarrito(formData) {
@@ -450,7 +541,7 @@
             });
         }
 
-        function actualizarCarrito() {
+        function actualizarCarrito(spinner, buttonText) {
             $.ajax({
                 url: 'MODELO/obtenerCarrito.php',
                 type: 'GET',
@@ -459,14 +550,20 @@
                     console.log('Información del carrito actualizada:');
                     $('#divCarrito').html(data);
                     $('#divCarritoResp').html(data);
+                    setTimeout(function() {
+                        spinner.hide();
+                        buttonText.show();
+                    }, 500);
                 },
                 error: function() {
                     console.log('Error al obtener la información del carrito.');
+                    spinner.hide();
+                    buttonText.show();
                 }
             });
         }
 
-        function actualizarFavoritos() {
+        function actualizarFavoritos(spinner, buttonText) {
             $.ajax({
                 url: 'MODELO/obtenerFavs.php',
                 type: 'GET',
@@ -475,15 +572,20 @@
                     console.log('Información de favoritos actualizada:');
                     $('#divFavs').html(data);
                     $('#divFavsResp').html(data);
-                    divCarritoResp
+                    setTimeout(function() {
+                        spinner.hide();
+                        buttonText.show();
+                    }, 500);
                 },
                 error: function() {
                     console.log('Error al obtener la información de favoritos.');
+                    spinner.hide();
+                    buttonText.show();
                 }
             });
         }
 
-        function agregarAlCarrito(formData) {
+        function agregarAlCarrito(formData, spinner, buttonText) {
             $.ajax({
                 type: 'POST',
                 url: 'MODELO/anadirAlCarrito.php',
@@ -492,7 +594,7 @@
                 success: function (response) {
                     if (response.status === 'success') {
                         console.log('Producto agregado al carrito');
-                        actualizarCarrito();
+                        actualizarCarrito(spinner, buttonText);
                     } else {
                         console.log('Error: ' + response.message);
                     }
@@ -503,7 +605,7 @@
             });
         }
 
-        function agregarAFavoritos(formData) {
+        function agregarAFavoritos(formData, spinner, buttonText) {
             $.ajax({
                 type: 'POST',
                 url: 'MODELO/anadirAFavs.php',
@@ -512,46 +614,13 @@
                 success: function (response) {
                     if (response.status === 'success') {
                         console.log('Producto agregado a favoritos');
-                        actualizarFavoritos();
+                        actualizarFavoritos(spinner, buttonText);
                     } else {
                         console.log('Error: ' + response.message);
                     }
                 },
                 error: function (error) {
                     console.error('Error:', error);
-                }
-            });
-        }
-
-        function actualizarCarrito() {
-            $.ajax({
-                url: 'MODELO/obtenerCarrito.php',
-                type: 'GET',
-                dataType: 'html',
-                success: function(data) {
-                    console.log('Información del carrito actualizada:');
-                    $('#divCarrito').html(data);
-                    $('#divCarritoResp').html(data);
-                },
-                error: function() {
-                    console.log('Error al obtener la información del carrito.');
-                }
-            });
-        }
-
-        function actualizarFavoritos() {
-            $.ajax({
-                url: 'MODELO/obtenerFavs.php',
-                type: 'GET',
-                dataType: 'html',
-                success: function(data) {
-                    console.log('Información de favoritos actualizada:');
-                    $('#divFavs').html(data);
-                    $('#divFavsResp').html(data);
-                    divCarritoResp
-                },
-                error: function() {
-                    console.log('Error al obtener la información de favoritos.');
                 }
             });
         }
