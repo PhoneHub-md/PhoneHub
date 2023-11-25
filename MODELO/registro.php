@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = trim($_POST['email2']);
         $password1 = trim($_POST['password1']);
         $password2 = trim($_POST['password2']);
+        $nombreCompleto = $nombre . " " . $apellido;
 
         if (empty($nombre) || empty($apellido) || empty($email) || empty($password1) || empty($password2)) {
             $_SESSION['errorRegistro'] = "Todos los campos son obligatorios";

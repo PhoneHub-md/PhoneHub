@@ -23,6 +23,7 @@
             </div>
             <form method="get" action="MODELO/filtrarTienda.php">
                 <div class="col d-flex flex-row justify-content-center justify-content-lg-end">
+                    <button type="button" class="btn btn-primary me-3" data-bs-dismiss="modal" data-bs-target="#modalAnadirProducto">Añadir producto</button>
                     <select name="precio" class="form-select w-25" aria-label="Default select example">
                         <option selected>Precio</option>
                         <option value="1">100€-250€</option>
@@ -138,6 +139,73 @@
             ?> 
         </div>
     </div>
+                                        <!--MODAL AÑADIR PRODUCTO-->
+    <div class="modal fade fondo_7" id="modalAnadirProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-secondary bg-opacity-50 rounded">
+    <div class="modal-header d-flex align-items-center justify-content-center">
+        <div class="col-7 d-flex justify-content-end">
+            <span style="text-shadow: black 0.1em 0.1em 0.2em" class="fs-2 text-white fw-semibold">AÑADIR PRODUCTO</span>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form id="pagoForm" class="form-floating" method="post" action="">
+            <div class="row m-1 p-1">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="nombrePago" id="nombrePago" placeholder="" style="height: 40px;">
+                    <label for="nombrePago">Nombre</label>
+                </div>
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="apellidoPago" id="apellidoPago" placeholder="" style="height: 40px;">
+                    <label for="apellidoPago">Apellido</label>
+                </div>
+            </div>
+            <div class="row m-1 p-1 ">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="email3" id="email3" placeholder="" style="height: 40px;">
+                    <label for="email3">Correo</label>
+                </div>
+            </div>
+            <div class="row m-1 p-1 ">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="localidad" id="localidad" placeholder="" style="height: 40px;">
+                    <label for="localidad">Localidad</label>
+                </div>
+            </div>
+            <div class="row m-1 p-1">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="calle" id="calle" placeholder="" style="height: 40px;">
+                    <label for="calle">Calle</label>
+                </div>
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="numero" id="numero" placeholder="" style="height: 40px;">
+                    <label for="numero">Número</label>
+                </div>
+            </div>
+            <div class="row m-1 p-1">
+                <div class="col form-floating p-2">
+                    <input type="text" class="form-control" name="tarjeta" id="tarjeta" placeholder="" style="height: 40px;">
+                    <label for="tarjeta">Tarjeta de crédito</label>
+                </div>
+            </div>
+            <div class="row mt-4 mb-4">
+                <div class="col"></div>
+                <div class="col-6 d-flex justify-content-center">
+                    <div class="row w-100">
+                        <button id="pagar" type="submit" class="btn btn-outline-light shadow-lg fw-semibold"><span>Pagar</span></button>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div id="mensajesValidacion_pagar" class="div"></div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>                                                   <!--FIN MODAL AÑADIR PRODUCTO-->
     <?php include 'footer.php'; ?>
 </body>
 </html>
