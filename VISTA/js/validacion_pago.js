@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         validarPago();
     })
-})
+
         function validarPago(){
         
             var mensajesValidacionPago = document.getElementById('mensajesValidacion_pagar');
@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (nombrePago === "" || email3 === "" || localidad === "" || calle === "" || numero === "" || apellidoPago === "" || tarjeta === "") {
             agregarMensajeValidacionPago('Por favor, rellena todos los campos.');
-            
         }
 
         // Validación del campo Correo
@@ -32,10 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (tarjeta !== "" && !validarTarjetaCredito(tarjeta)) {
             agregarMensajeValidacionPago('Tarjeta de crédito no válida');
         }
+        
+        if (numero !== "" && isNaN(numero)) {
+            agregarMensajeValidacionPago('Por favor, introduce solo números en el campo "Número".');
+        }
 
-        if (mensajesValidacion.innerHTML === '') {
+        if (mensajesValidacionPago.innerHTML === '') {
             // Puedes enviar el formulario aquí si es válido
             document.getElementById("pagoForm").submit();
+            alert("Pago realizado con éxito");
         }
     }
  
@@ -84,3 +88,4 @@ function validarTarjetaCredito(numeroTarjeta) {
 
     return suma % 10 === 0;
 }
+})

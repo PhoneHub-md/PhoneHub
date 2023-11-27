@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div style="height: 2em;" class="row bg-black"></div>
-    <div class="row bg-black justify-content-center">
-        <div class="col-8 mb-5 col-sm-6 col-md-5 col-xl-3  text-white text-center">
+    <div class="row bg-black justify-content-center ">
+        <div class="col-8 mb-5 col-sm-6 col-md-5 col-xl-3 elemento  text-white text-center">
             <div class="row">
                 <div class="col p-2 mb-2">
                     <span class="fw-semibold" >PÁGINAS</span>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-8 mb-5 col-sm-6 col-md-5 col-xl-3  text-white text-center">
+        <div class="col-8 mb-5 col-sm-6 col-md-5 col-xl-3 elemento  text-white text-center">
         <div class="row">
                 <div class="col p-2 mb-2">
                 <span class="fw-semibold">CONTACTO</span>
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-8 mb-5 col-sm-6 col-md-5 col-xl-3  text-white text-center">
+        <div class="col-8 mb-5 col-sm-6 col-md-5 col-xl-3 elemento  text-white text-center">
         <div class="row">
                 <div class="col p-2  mb-2">
                 <span class="fw-semibold">SÍGUENOS</span>

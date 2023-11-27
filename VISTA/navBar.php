@@ -1,3 +1,14 @@
+<?php                       
+    $controladorLogin = new LoginController();
+    $nombreUsuario = $controladorLogin->verificarSesion();              
+?>
+<style>
+    .elemento {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+  </style>
 <header>
     <div class="container-fluid">
         <div class="row fondo_3 text-white"> <!--BARRA TELEFONOS-->
@@ -51,11 +62,17 @@
                                     <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
                                 </svg>
                             </button>
+                            <?php
+                                if ($nombreUsuario) {
+                            ?>
                             <button class="btn btn-outline-dark border border-0 ms-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos_responsive" aria-controls="offcanvasRight">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                 </svg>
                             </button>
+                            <?php
+                        }
+                        ?>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -95,7 +112,7 @@
                 </div>
             </div>
                                 <!--LOGO-->
-            <div class="col d-flex justify-content-center justify-content-lg-start">
+            <div class="col d-flex justify-content-end justify-content-lg-start">
                 <img class="img-fluid  p-3" style="width: 20em;" src="VISTA/img/PhoneHub_Logo2-fotor-2023102312412.png">
             </div>
                                 <!--FIN LOGO-->
@@ -251,31 +268,20 @@
                         </div>
                     </div>
                 </div>                          <!--FIN MODAL REGISTRO-->
-            <div class="col   d-flex  align-items-center justify-content-end">   <!--COLUMNA BOTON INICIAR SESION, FAVORITOS Y CARRITO-->     
-                <?php                       
-                $controladorLogin = new LoginController();
-                $nombreUsuario = $controladorLogin->verificarSesion();
-
-                if ($nombreUsuario) {
-                ?>
+            <div class="col-3    d-flex  align-items-center justify-content-end">   <!--COLUMNA BOTON INICIAR SESION, FAVORITOS Y CARRITO-->     
+                
                     <button class="btn btn-outline-dark border border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
                         <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person m-1" viewBox="0 0 16 16">
                             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                         </svg>
                     </button>
-                <?php
-                } else {
-                ?>
-                    <button type="button" class="btn btn-outline-dark m-1" data-bs-toggle="modal" data-bs-target="#modal_inicio_sesion">
-                       <span class="fw-semibold">Iniciar sesión</span> 
-                    </button>
+                
+                    
 
-                <?php
-                }
-                ?>          
+                        
                                                   <!--BOTON Y MODAL FAVORITOS-->
                 <?php
-                if (!isset($_SESSION['admin'])) {
+                if (!isset($_SESSION['admin']) && $nombreUsuario) {
                 ?>
                     <button class="btn btn-outline-dark border border-0 d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos" aria-controls="offcanvasRight">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
@@ -330,7 +336,14 @@
                             <?php
                             } else {
                             ?>
-                                <p>Inicia sesion</p>
+                            <div class="row mt-5">
+                                <div class="col d-flex justify-content-center">
+                                    <button type="button" class="btn btn-outline-dark m-1" data-bs-toggle="modal" data-bs-target="#modal_inicio_sesion">
+                                        <span class="fw-semibold">Iniciar sesión</span> 
+                                    </button>
+                                </div>
+                            </div>
+                                
                             <?php
                             }
                         ?>
@@ -368,19 +381,19 @@
     <div class="container-fluid">
         <div class="row p-2">
 
-            <div class="col d-flex justify-content-center">
+            <div class="col elemento d-flex justify-content-center">
                 <a class=" fw-lighter fs-5 nav" href="index.php?home">HOME</a>
             </div>
 
-            <div class="col d-flex justify-content-center">
+            <div class="col elemento d-flex justify-content-center">
                 <a class=" fw-lighter fs-5 nav" href="index.php?tienda">TIENDA</a>
             </div>
 
-            <div class="col d-flex justify-content-center">
+            <div class="col elemento d-flex justify-content-center">
                 <a class=" fw-lighter fs-5 nav" href="index.php?nosotros">NOSOTROS</a>
             </div>
 
-            <div class="col d-flex justify-content-center">
+            <div class="col elemento d-flex justify-content-center">
                 <a class=" fw-lighter fs-5 nav" href="index.php?contacto">CONTACTO</a>
             </div>
 
@@ -401,7 +414,7 @@
         </div>
     </div>
     <div class="modal-body">
-        <form id="pagoForm" class="form-floating" method="post" action="">
+        <form id="pagoForm" class="form-floating" method="post" action="MODELO/pago.php">
             <div class="row m-1 p-1">
                 <div class="col form-floating p-2">
                     <input type="text" class="form-control" name="nombrePago" id="nombrePago" placeholder="" style="height: 40px;">
@@ -430,7 +443,7 @@
                     <label for="calle">Calle</label>
                 </div>
                 <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="numero" id="numero" placeholder="" style="height: 40px;">
+                    <input type="number" class="form-control" name="numero" id="numero" placeholder="" style="height: 40px;">
                     <label for="numero">Número</label>
                 </div>
             </div>
@@ -444,7 +457,7 @@
                 <div class="col"></div>
                 <div class="col-6 d-flex justify-content-center">
                     <div class="row w-100">
-                        <button id="pagar" type="submit" class="btn btn-outline-light shadow-lg fw-semibold"><span>Pagar</span></button>
+                        <button id="pagar" type="submit" name="boton_pagar" class="btn btn-outline-light shadow-lg fw-semibold"><span>Pagar</span></button>
                     </div>
                 </div>
                 <div class="col"></div>
@@ -456,9 +469,8 @@
   </div>
 </div>                                          <!--FIN MODAL PAGO--> 
                                                 
-
-<script src="VISTA/js/validacion_pago_responsive.js"></script>
 <script src="VISTA/js/validacion_pago.js"></script>
+<script src="VISTA/js/reveal.js"></script>
 <script src="VISTA/js/form_registro.js"></script>
 <script src="VISTA/js/modal.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -467,6 +479,8 @@
 <script src="VISTA/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function () {
+        
+
         // Manejar clic en el botón "Eliminar del Carrito"
         $(document).on('click', '.eliminarDelCarrito', function () {
             var formData = $(this).closest('form').serialize();

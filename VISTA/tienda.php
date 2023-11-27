@@ -18,12 +18,19 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row p-3  mb-5 mt-lg-5">
+        <div class="row p-3  mb-5 mt-lg-5 elemento">
             <div class=" d-none d-lg-flex col-lg-5 col-xl-6">
             </div>
+            <?php
+                if(isset($_SESSION['admin'])){
+                    echo '<form method="POST" action="MODELO/anadirProducto.php">
+                            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modalAnadirProducto">Añadir producto</button>
+                        </form>';
+                }
+            ?>
+            
             <form method="get" action="MODELO/filtrarTienda.php">
                 <div class="col d-flex flex-row justify-content-center justify-content-lg-end">
-                    <button type="button" class="btn btn-primary me-3" data-bs-dismiss="modal" data-bs-target="#modalAnadirProducto">Añadir producto</button>
                     <select name="precio" class="form-select w-25" aria-label="Default select example">
                         <option selected>Precio</option>
                         <option value="1">100€-250€</option>
@@ -66,7 +73,7 @@
 
             foreach ($moviles as $producto) {
             ?>
-                <div class="col-10 col-md-6 col-lg-4 col-xxl-3 mt-3 mb-5">
+                <div class="col-10 col-md-6 col-lg-4 col-xxl-3 mt-3 mb-5 elemento">
                     <div class="card d-flex align-items-center bg-body  border-0">
                         <img style="width: 13em;" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>" class="card-img-top"  alt="..."></img>
                         <div class="card-body d-flex flex-column text-center">
@@ -113,14 +120,17 @@
                                             </button>';
                                 }else{
                                 ?>
-                               <button style="margin-left: 60px;" type="button" class="btn btn-dark anadirAlCarrito ">
+                               <button type="button" class="btn btn-dark anadirAlCarrito ">
                                     <span class="btn-text">Añadir al carrito</span>
                                     <div class="spinner-border" role="status" style="display: none;">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>
                                 </button>
-                                <button type="button" class="btn btn-outline-danger border border-0 anadirAFavoritos m-1" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart m-1 btn-text" viewBox="0 0 16 16">
+                                <?php
+                                    if($nombreUsuario){
+                                    ?>
+                                <button type="button" class="btn btn-danger border border-0 anadirAFavoritos" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                         <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                     </svg>
                                     <div class="spinner-border spinner-border-sm" role="status" style="display: none;">
@@ -128,6 +138,7 @@
                                     </div>
                                 </button>
                                 <?php
+                                    }
                                 }
                                 ?>
                             </form>
@@ -144,58 +155,42 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-secondary bg-opacity-50 rounded">
     <div class="modal-header d-flex align-items-center justify-content-center">
-        <div class="col-7 d-flex justify-content-end">
-            <span style="text-shadow: black 0.1em 0.1em 0.2em" class="fs-2 text-white fw-semibold">AÑADIR PRODUCTO</span>
+        <div class="col-9 d-flex justify-content-end">
+            <span style="text-shadow: black 0.1em 0.1em 0.2em" class="fs-2 text-white fw-semibold">NUEVO PRODUCTO</span>
         </div>
         <div class="col d-flex justify-content-end">
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
     </div>
     <div class="modal-body">
-        <form id="pagoForm" class="form-floating" method="post" action="">
+        <form id="anadirProducto" class="form-floating" enctype="multipart/form-data" method="post" action="MODELO/anadirProducto.php">
             <div class="row m-1 p-1">
                 <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="nombrePago" id="nombrePago" placeholder="" style="height: 40px;">
-                    <label for="nombrePago">Nombre</label>
+                    <input type="text" class="form-control" name="tituloProducto" id="tituloProducto" placeholder="" style="height: 40px;" required>
+                    <label for="tituloProducto">Título</label>
                 </div>
                 <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="apellidoPago" id="apellidoPago" placeholder="" style="height: 40px;">
-                    <label for="apellidoPago">Apellido</label>
+                    <input type="text" class="form-control" name="descripcionProducto" id="descripcionProducto" placeholder="" required style="height: 40px;">
+                    <label for="descripcionProducto">Descripción</label>
                 </div>
             </div>
             <div class="row m-1 p-1 ">
                 <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="email3" id="email3" placeholder="" style="height: 40px;">
-                    <label for="email3">Correo</label>
+                    <input type="number" class="form-control" name="precioProducto" id="precioProducto" placeholder="" required style="height: 40px;">
+                    <label for="precioProducto">Precio</label>
                 </div>
             </div>
             <div class="row m-1 p-1 ">
                 <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="localidad" id="localidad" placeholder="" style="height: 40px;">
-                    <label for="localidad">Localidad</label>
-                </div>
-            </div>
-            <div class="row m-1 p-1">
-                <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="calle" id="calle" placeholder="" style="height: 40px;">
-                    <label for="calle">Calle</label>
-                </div>
-                <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="numero" id="numero" placeholder="" style="height: 40px;">
-                    <label for="numero">Número</label>
-                </div>
-            </div>
-            <div class="row m-1 p-1">
-                <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="tarjeta" id="tarjeta" placeholder="" style="height: 40px;">
-                    <label for="tarjeta">Tarjeta de crédito</label>
+                    <input type="file" class="form-control" name="imagenProducto" id="imagenProducto" accept="image/*" required placeholder="" style="height: 40px;">
+                    <label for="imagenProducto">Imagen</label>
                 </div>
             </div>
             <div class="row mt-4 mb-4">
                 <div class="col"></div>
                 <div class="col-6 d-flex justify-content-center">
                     <div class="row w-100">
-                        <button id="pagar" type="submit" class="btn btn-outline-light shadow-lg fw-semibold"><span>Pagar</span></button>
+                        <button id="anadir" type="submit" class="btn btn-outline-light shadow-lg fw-semibold"><span>Añadir</span></button>
                     </div>
                 </div>
                 <div class="col"></div>

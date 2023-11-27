@@ -20,11 +20,11 @@
     <div class="container-fluid fondo_5  d-flex flex-column justify-content-center align-content-center">
         <div class="row">
             <div class="col">
-                <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold">CALIDAD Y SERVICIO QUE MARCAN </br> LA DIFERENCIA.</p>
+                <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white elemento text-center display-4 text-uppercase  fw-bold">CALIDAD Y SERVICIO QUE MARCAN </br> LA DIFERENCIA.</p>
             </div>
         </div>
         <div class="row p-5">
-            <div class="col text-center">
+            <div class="col text-center elemento">
                 <a class="navbar-brand" href="#caracteristicas">
                     <button  class="btn btn-outline-light mt-5 border border-0" >
                         <svg  xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-down-circle p-1" viewBox="0 0 16 16">
@@ -39,11 +39,11 @@
     <div id="caracteristicas" class="container">
         <div class="row  justify-content-center ">
             <div class="text-center col-9 col-md  mt-5 mb-2 p-3">
-                <span class="fs-1">¿POR QUÉ PHONEHUB?</span>
+                <span class="fs-1 elemento">¿POR QUÉ PHONEHUB?</span>
             </div>
         </div>
         <div class="row p-4">
-            <div class="col-12 col-lg m-2 p-5">
+            <div class="col-12 col-lg m-2 p-5 elemento">
                 <div class="row p-2">
                     <div class="col text-center fs-3 fst-italic">
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-phone m-2" viewBox="0 0 16 16">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col m-2 p-5">
+            <div class="col m-2 p-5 elemento">
                 <div class="row p-2">
                     <div class="col text-center fs-3 fst-italic">
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-fingerprint m-2" viewBox="0 0 16 16">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12  m-2 p-5">
+            <div class="col-12  m-2 p-5 elemento">
                 <div class="row p-2">
                     <div class="text-center fs-3 fst-italic">
                         <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-person-raised-hand m-2" viewBox="0 0 16 16">
@@ -96,7 +96,7 @@
             </div>
         </div>
             <div class="row mb-5">
-                <div class="col-xs-12 col-md  m-2 p-5">
+                <div class="col-xs-12 col-md elemento  m-2 p-5">
                     <div class="row p-2">
                         <div class="col text-center fs-3 fst-italic">
                             <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-soundwave m-2" viewBox="0 0 16 16">
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg m-2 p-5">
+                <div class="col-12 col-lg m-2 elemento p-5">
                     <div class="row p-2">
                         <div class="col text-center fs-3 fst-italic">
                             <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-tags m-2" viewBox="0 0 16 16">

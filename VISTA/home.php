@@ -1,32 +1,40 @@
+                      
+             
+
 <?php
     require_once "MODELO/Conexion.php";
     require_once "CONTROL/ProductoController.php";
 
     $controlador = new ProductoController();
     $novedades = $controlador->buscarNovedades();
+
+    $controladorLogin = new LoginController();
+    $nombreUsuario = $controladorLogin->verificarSesion();    
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhoneHub</title>
     <link rel="stylesheet" type="text/css" href="VISTA/css/style.css">
     <link href="VISTA/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 <?php include 'navbar.php'; ?>                                           
     <section>
-        <div class="container-fluid fondo d-flex flex-column justify-content-center align-content-center ">   <!--FOTO CONTAINER-->
+        <div class="container-fluid  fondo d-flex flex-column justify-content-center align-content-center ">   <!--FOTO CONTAINER-->
             <div class="row">
                 <div class="col">
-                    <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold">LA MEJOR ELECCIÓN PARA TU PRÓXIMO </br> DISPOSITIVO.</p>
+                    <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white elemento text-center display-4 text-uppercase  fw-bold">LA MEJOR ELECCIÓN PARA TU PRÓXIMO </br> DISPOSITIVO.</p>
                 </div>
             </div>
             <div class="row p-5">
                 <div class="col text-center">
-                    <a href="index.php?tienda"><button class="btn btn-outline-light mt-5 shadow" >Descubrir</button></a>
+                    <a href="index.php?tienda"><button class="btn elemento btn-outline-light mt-5 shadow" >Descubrir</button></a>
                 </div>
             </div>
             <div class=" col-2 col-md-1 fixed-right-bottom">
@@ -41,13 +49,13 @@
         <div class="container-fluid bg-body-secondary">       <!--CONTAINER CARROUSSEL-->
             <div class="row  justify-content-center ">
                 <div class="text-center col-9 col-md  mt-5 mb-2 p-3">
-                    <span class="fs-1">Últimas novedades</span>
+                    <span class="fs-1 elemento">Últimas novedades</span>
                 </div>
             </div>
-            <div class="row p-5 d-none d-lg-block">         <!--CARROUSSEL NO RESPONSIVE-->
+            <div class="row p-5 d-none d-lg-block elemento">         <!--CARROUSSEL NO RESPONSIVE-->
                 <div class="col p-4">
                     <div id="carouselExamplee" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner ">
                             <div class="carousel-item active" data-bs-interval="5000">   <!--PRIMEROS 3 PRODUCTOS-->
                                 <div class="row  justify-content-around">
                                     <?php 
@@ -86,6 +94,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -95,6 +106,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -148,6 +160,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -157,6 +172,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -187,7 +203,7 @@
                 </div>
             </div>                              <!--FIN CARROUSSEL NO RESPONISVE-->
 
-            <div class="row p-5 d-none d-md-block d-lg-none">     <!--CARROUSSEL RESPONSIVE 1-->
+            <div class="row p-5 d-none d-md-block d-lg-none elemento">     <!--CARROUSSEL RESPONSIVE 1-->
                 <div class="col p-4">
                     <div id="carouselExample" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -228,6 +244,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -237,6 +256,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -289,6 +309,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -298,6 +321,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -349,6 +373,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -358,6 +385,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -384,7 +412,7 @@
                 </div>
             </div>                                  <!--FIN CARROUSEL RESPONSIVE 1-->
 
-            <div class="row p-5 d-md-none">     <!--CARROUSSEL RESPONSIVE 2-->
+            <div class="row p-5 d-md-none elemento">     <!--CARROUSSEL RESPONSIVE 2-->
                 <div class="col p-4">
                     <div id="carouselResponsive2" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -425,6 +453,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -434,6 +465,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -486,6 +518,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -495,6 +530,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -546,6 +582,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -555,6 +594,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -605,6 +645,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -614,6 +657,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -664,6 +708,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -673,6 +720,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -723,6 +771,9 @@
                                                                     <span class="visually-hidden">Loading...</span>
                                                                 </div>
                                                             </button>
+                                                            <?php
+                                                            if($nombreUsuario){
+                                                            ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
                                                                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -732,6 +783,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
+                                                            }
                                                         }
                                                         ?>
                                                     </form>
@@ -763,15 +815,15 @@
 
         </div> 
         
-        <div class="container-fluid fondo_dos d-flex flex-column justify-content-center align-content-center ">   <!--FOTO CONTAINER-->
+        <div class="container-fluid fondo_dos d-flex flex-column justify-content-center align-content-center">   <!--FOTO CONTAINER-->
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold">DESCUBRE EL PODER DE LA COMUNICACIÓN EN TUS MANOS.</p>
+                    <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center elemento display-4 text-uppercase  fw-bold">DESCUBRE EL PODER DE LA COMUNICACIÓN EN TUS MANOS.</p>
                 </div>
             </div>
             <div class="row p-5">
                 <div class="col text-center">
-                    <a href="index.php?tienda"><button class="btn btn-outline-light mt-5 shadow" >Descubrir</button></a>
+                    <a href="index.php?tienda"><button class="btn elemento btn-outline-light mt-5 shadow" >Descubrir</button></a>
                 </div>
             </div>   
         </div>              <!--FIN FOTO CONTAINER--><!--FIN CONTAINER CARROUSEL-->

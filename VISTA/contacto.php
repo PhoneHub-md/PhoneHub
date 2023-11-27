@@ -22,14 +22,14 @@
         
         <div class="row mb-5">
             <div class="col">
-                <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white text-center display-4 text-uppercase  fw-bold"> ¡CONTÁCTANOS!</p>
+                <p style="text-shadow: black 0.1em 0.1em 0.2em" class="text-white elemento text-center display-4 text-uppercase  fw-bold"> ¡CONTÁCTANOS!</p>
             </div>
         </div>
         <div class="row justify-content-center">
 
         
         <div  class="col-10 col-sm-8  col-lg-6 col-xl-6 m-3 p-3 bg-body bg-opacity-25 rounded">
-            <form id="miFormulario" class="form-floating">
+            <form id="miFormulario" class="form-floating elemento">
               <div class="row">
                 <div class="col form-floating p-2 m-1">
                   <input type="text" class="form-control" id="nombre_contacto" placeholder="" style="height: 40px;">
