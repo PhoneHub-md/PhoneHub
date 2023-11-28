@@ -1,15 +1,7 @@
-                      
-             
-
 <?php
-    require_once "MODELO/Conexion.php";
-    require_once "CONTROL/ProductoController.php";
+    require_once "CONTROL/Controlador.php";
+    $novedades = buscarNovedades();
 
-    $controlador = new ProductoController();
-    $novedades = $controlador->buscarNovedades();
-
-    $controladorLogin = new LoginController();
-    $nombreUsuario = $controladorLogin->verificarSesion();    
 ?>
 
 <!DOCTYPE html>
@@ -67,18 +59,18 @@
                                         <div class="col-3 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center ">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1"><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -95,7 +87,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -133,18 +125,18 @@
                                         <div class="col-3 bg-body rounded ">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1"><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -161,7 +153,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -217,18 +209,18 @@
                                         <div class="col-4 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1 "><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -245,7 +237,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -282,18 +274,18 @@
                                         <div class="col-4 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -310,7 +302,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -326,7 +318,9 @@
                                                         ?>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
                                     <?php 
                                         endif;
@@ -346,18 +340,18 @@
                                         <div class="col-4 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -374,7 +368,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -390,7 +384,9 @@
                                                         ?>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
                                     <?php 
                                         endif;
@@ -426,18 +422,18 @@
                                         <div class="col-6 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1 "><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -454,7 +450,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -491,18 +487,18 @@
                                         <div class="col-6 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -519,7 +515,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -535,7 +531,9 @@
                                                         ?>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
                                     <?php 
                                         endif;
@@ -555,18 +553,18 @@
                                         <div class="col-6 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -583,7 +581,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -599,7 +597,9 @@
                                                         ?>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
                                     <?php 
                                         endif;
@@ -618,18 +618,18 @@
                                         <div class="col-6 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -646,7 +646,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -662,7 +662,9 @@
                                                         ?>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
                                     <?php 
                                         endif;
@@ -681,18 +683,18 @@
                                         <div class="col-6 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -709,7 +711,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -725,7 +727,9 @@
                                                         ?>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
                                     <?php 
                                         endif;
@@ -744,18 +748,18 @@
                                         <div class="col-6 bg-body rounded">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                    <img class="img-fluid rounded" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col d-flex flex-column text-center">
-                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto['titulo']; ?></span>
-                                                    <span class="p-1"><?php echo $producto['precio']; ?> €</span>
+                                                    <span class="p-1 mt-2 fw-semibold"><?php echo $producto->getTitulo(); ?></span>
+                                                    <span class="p-1 "><?php echo $producto->getPrecio(); ?> €</span>
                                                     <form>
-                                                        <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                                        <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                                        <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
-                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
+                                                        <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                                        <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                                        <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
+                                                        <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                                         <?php
                                                         if(isset($_SESSION['admin'])){
                                                             echo '<button type="submit" class="btn btn-danger m-1">
@@ -772,7 +776,7 @@
                                                                 </div>
                                                             </button>
                                                             <?php
-                                                            if($nombreUsuario){
+                                                            if(isset($_SESSION['user'])){
                                                             ?>
                                                             <button type="button" class="btn btn-outline-danger border border-0  anadirAFavoritos m-1">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">
@@ -788,7 +792,9 @@
                                                         ?>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
+                                            
                                         </div>
                                     <?php 
                                         endif;

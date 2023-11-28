@@ -1,3 +1,14 @@
+<?php
+    require_once "CONTROL/Controlador.php";
+    $precio = (isset($_GET['precio']) && $_GET['precio'] !== 'Precio') ? $_GET['precio'] : null;
+    $marca = (isset($_GET['marca']) && $_GET['marca'] !== 'Marca') ? $_GET['marca'] : null;
+    $orden = (isset($_GET['orden']) && $_GET['orden'] !== 'Orden') ? $_GET['orden'] : null;
+    $buscar = (isset($_GET['buscar']) && $_GET['buscar'] !== 'Buscar') ? $_GET['buscar'] : null;
+
+    $productos = buscarProductos($marca, $precio, $orden, $buscar);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,39 +71,27 @@
     <div class="container">
         <div class="row justify-content-center">
             <?php
-            require_once "MODELO/Conexion.php";
-            require_once "CONTROL/ProductoController.php";
-            
-            $marca = isset($_GET['marca']) && $_GET['marca'] !=="Marca"  ? $_GET['marca'] : null;
-            $precio = isset($_GET['precio']) && $_GET['precio'] !=="Precio" ? $_GET['precio'] : null;
-            $orden = isset($_GET['orden']) && $_GET['orden'] !=="Orden" ? $_GET['orden'] : null;
-            $buscar = isset($_GET['buscar']) ? $_GET['buscar'] : null;
-            
-            $controlador = new ProductoController();
-            $moviles = $controlador->buscarDatos($marca, $precio, $orden, $buscar);
 
-            foreach ($moviles as $producto) {
+            foreach ($productos as $producto) {
             ?>
                 <div class="col-10 col-md-6 col-lg-4 col-xxl-3 mt-3 mb-5 elemento">
                     <div class="card d-flex align-items-center bg-body  border-0">
-                        <img style="width: 13em;" src="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>" class="card-img-top"  alt="..."></img>
+                        <img style="width: 13em;" src="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>" class="card-img-top"  alt="..."></img>
                         <div class="card-body d-flex flex-column text-center">
                             <div class="row m-1 p-1">
                                 <div class="col d-flex justify-content-center">
-                                    <h5 class="card-title"><?php echo $producto['titulo']; ?></h5>
+                                    <h5 class="card-title"><?php echo $producto->getTitulo(); ?></h5>
                                 </div>
                             </div>
                             <div class="row m-1 p-1">
                                 <div class="col">
                                     <p class="card-text word-wrap text-body-secondary ">
                                     <?php 
-                                        $maxCaracteres = 50; // Cambia este valor al máximo de caracteres permitidos
+                                        $maxCaracteres = 50;
 
-                                        $descripcion = $producto['descripcion'];
+                                        $descripcion = $producto->getDescripcion();
 
-                                        // Verificar si la longitud de la descripción es mayor al límite
                                         if (strlen($descripcion) > $maxCaracteres) {
-                                            // Si es mayor, truncar el texto y agregar puntos suspensivos
                                             $descripcion = substr($descripcion, 0, $maxCaracteres) . '...';
                                         }
 
@@ -103,14 +102,14 @@
                             </div>
                             <div class="row m-1 p-1">
                                 <div class="col">
-                                    <p class="card-text fw-bold"><?php echo $producto['precio']; ?> €</p>
+                                    <p class="card-text fw-bold"><?php echo $producto->getPrecio(); ?> €</p>
                                 </div>
                             </div>
                             <form method = "post" action="MODELO/eliminarProducto.php">
-                                <input type="hidden" name="idProducto" value="<?php echo $producto['idProducto']; ?>">
-                                <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto['imagenProducto']); ?>">
-                                <input type="hidden" name="titulo" value="<?php echo $producto['titulo']; ?>">
-                                <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                                <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
+                                <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
+                                <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
+                                <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
                                 <?php
                                 if(isset($_SESSION['admin'])){
                                     echo '<button type="submit" class="btn btn-danger">
@@ -127,7 +126,7 @@
                                     </div>
                                 </button>
                                 <?php
-                                    if($nombreUsuario){
+                                    if(isset($_SESSION['user'])){
                                     ?>
                                 <button type="button" class="btn btn-danger border border-0 anadirAFavoritos" >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart btn-text" viewBox="0 0 16 16">

@@ -1,7 +1,3 @@
-<?php                       
-    $controladorLogin = new LoginController();
-    $nombreUsuario = $controladorLogin->verificarSesion();              
-?>
 <style>
     .elemento {
     opacity: 0;
@@ -147,10 +143,10 @@
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="form-floating" method="post" action="MODELO/login.php">
+                                <form class="form-floating" method="post" action="index.php">
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="" style="height: 40px;" required>
+                                            <input type="text" class="form-control" id="email" name="email"  autocomplete="email" placeholder="" style="height: 40px;" required>
                                             <label for="email">Correo</label>
                                         </div>
                                     </div>
@@ -170,7 +166,7 @@
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Entrar</button>
+                                                <button type="submit" name="login" class="btn btn-outline-light shadow-lg fw-semibold">Entrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
@@ -217,7 +213,7 @@
                                 </div>
                             </div>
                             <div class="modal-body">
-                            <form id="registroForm" class="form-floating" method="post" action="MODELO/registro.php">
+                            <form id="registroForm" class="form-floating" method="post" action="index.php">
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
                                             <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" style="height: 40px;">
@@ -257,7 +253,7 @@
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button id="registrar" type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Registrar</button>
+                                                <button id="registrar" name="registro" type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Registrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
@@ -275,13 +271,9 @@
                             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                         </svg>
                     </button>
-                
-                    
-
-                        
                                                   <!--BOTON Y MODAL FAVORITOS-->
                 <?php
-                if (!isset($_SESSION['admin']) && $nombreUsuario) {
+                if (!isset($_SESSION['admin']) && isset($_SESSION['user'])) {
                 ?>
                     <button class="btn btn-outline-dark border border-0 d-none d-lg-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos" aria-controls="offcanvasRight">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
@@ -312,7 +304,7 @@
                     </div>
                     <div class="offcanvas-body bg-body-secondary">
                         <?php
-                        if ($nombreUsuario) {
+                        if (isset($_SESSION['user']) || isset($_SESSION['admin'])) {
                             ?>
                             <div class="row mt-5">
                                 <div class="col"></div>
@@ -320,16 +312,16 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-person m-1" viewBox="0 0 16 16">
                                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                                     </svg>
-                                    <span class="fw-semibold fs-5"><?= $nombreUsuario ?></span>
+                                    <span class="fw-semibold fs-5"><?= $_SESSION['userName'] ?></span>
                                 </div>
                                 <div class="col"></div>
                             </div>
                             <div class="row mt-5">
                                 <div class="col"></div>
                                 <div class="col-6 d-flex justify-content-center">
-                                    <a href="MODELO/logout.php">
-                                        <button class="btn btn-outline-dark"><span class="fw-semibold">Cerrar Sesion</span></button>
-                                    </a>
+                                    <form method="post" action="index.php">
+                                        <button class="btn btn-outline-dark" name="logout"><span class="fw-semibold">Cerrar Sesion</span></button>
+                                    </form>
                                 </div>
                                 <div class="col"></div>
                             </div>
