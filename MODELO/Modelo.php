@@ -120,7 +120,7 @@ class Modelo{
 
         while ($row = $result->fetch_assoc()) {
             
-            $producto = new Producto($row);
+            $producto = new Producto($row['idProducto'], $row['titulo'], $row['descripcion'], $row['precio'], $row['imagenProducto']);
             $productos[] = $producto;
         }
     
@@ -139,12 +139,44 @@ class Modelo{
 
         while ($row = $result->fetch_assoc()) {
 
-            $producto = new Producto($row);
+            $producto = new Producto($row['idProducto'], $row['titulo'], $row['descripcion'], $row['precio'], $row['imagenProducto']);
             $productos[] = $producto;
         }
     
         $stmt->close();
     
         return $productos;
+    }
+
+    public function agregarProducto($producto){
+        $tituloProducto = $producto->getTitulo();
+        $descripcionProducto = $producto->getDescripcion();
+        $precioProducto = $producto->getPrecio();
+        $imagenProducto = $producto->getImagenProducto();
+
+        $consulta = "INSERT INTO producto (titulo, descripcion, precio, imagenProducto) VALUES (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($consulta);
+        $stmt->bind_param("ssib", $tituloProducto, $descripcionProducto, $precioProducto, $imagenProducto);
+        $stmt->send_long_data(3, $imagenProducto);
+        $stmt->execute();
+        $stmt->close();
+
+        return $producto;
+    }
+
+    public function borrarProducto($idProducto){
+        $consulta = "DELETE FROM producto WHERE idProducto = ?";
+        $stmt = $this->db->prepare($consulta);
+        $stmt->bind_param('i', $idProducto);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function pagar($idUsuario){
+        $consulta = "UPDATE usuario SET cartData = NULL WHERE idUsuario = ?";
+        $stmt = $this->db->prepare($consulta);
+        $stmt->bind_param("i", $idUsuario);
+        $stmt->execute();
+        $stmt->close();
     }
 }

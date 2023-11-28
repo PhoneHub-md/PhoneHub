@@ -3,8 +3,8 @@
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.5s ease, transform 0.5s ease;
-}
-  </style>
+    }
+</style>
 <header>
     <div class="container-fluid">
         <div class="row fondo_3 text-white"> <!--BARRA TELEFONOS-->
@@ -59,7 +59,7 @@
                                 </svg>
                             </button>
                             <?php
-                                if ($nombreUsuario) {
+                                if (isset($_SESSION['user'])) {
                             ?>
                             <button class="btn btn-outline-dark border border-0 ms-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#favoritos_responsive" aria-controls="offcanvasRight">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-heart m-1" viewBox="0 0 16 16">
@@ -89,9 +89,8 @@
                         </div>
                         <div class="offcanvas-body" id="divCarritoResp">
                             <?php
-                            include 'MODELO/obtenerCarrito.php'
+                                include 'MODELO/obtenerCarrito.php'
                             ?>
-                            
                         </div>
                     </div>
                     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="favoritos_responsive" aria-labelledby="offcanvasRightLabel">
@@ -115,7 +114,7 @@
 
                                 <!--SEARCH-->
             <div class="col d-none  d-lg-flex   align-items-center justify-content-center">
-                <form class="d-flex" role="search" action = "MODELO/filtrarTienda.php">
+                <form class="d-flex" method="POST" role="search" action = "index.php">
                     <input name="buscar" style="width: 25em;" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                     <button class="btn btn-outline-dark" type="submit"><span class="fw-semibold">Buscar</span></button>
                 </form>
@@ -253,7 +252,7 @@
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button id="registrar" name="registro" type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Registrar</button>
+                                                <button name="registro" type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Registrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
@@ -290,7 +289,7 @@
                     </div>
                     <div class="offcanvas-body" id="divFavs">
                         <?php
-                        include 'MODELO/obtenerFavs.php'
+                            include 'MODELO/obtenerFavs.php'
                         ?>
                     </div>
                 </div>              <!--FIN BOTON Y MODAL FAVORITOS-->
@@ -360,7 +359,7 @@
                     </div>
                     <div class="offcanvas-body" id="divCarrito">
                     <?php
-                        include 'MODELO/obtenerCarrito.php'
+                       include 'MODELO/obtenerCarrito.php'
                         ?>
                     </div>
                 </div>                      <!--FIN BOTON Y MODAL CARRITO-->
@@ -406,7 +405,7 @@
         </div>
     </div>
     <div class="modal-body">
-        <form id="pagoForm" class="form-floating" method="post" action="MODELO/pago.php">
+        <form id="pagoForm" class="form-floating" method="post" action="index.php">
             <div class="row m-1 p-1">
                 <div class="col form-floating p-2">
                     <input type="text" class="form-control" name="nombrePago" id="nombrePago" placeholder="" style="height: 40px;">
@@ -449,7 +448,7 @@
                 <div class="col"></div>
                 <div class="col-6 d-flex justify-content-center">
                     <div class="row w-100">
-                        <button id="pagar" type="submit" name="boton_pagar" class="btn btn-outline-light shadow-lg fw-semibold"><span>Pagar</span></button>
+                        <button id="pagar" type="submit" name="pagar" class="btn btn-outline-light shadow-lg fw-semibold"><span>Pagar</span></button>
                     </div>
                 </div>
                 <div class="col"></div>
@@ -476,42 +475,46 @@
         // Manejar clic en el botón "Eliminar del Carrito"
         $(document).on('click', '.eliminarDelCarrito', function () {
             var formData = $(this).closest('form').serialize();
-            eliminarDelCarrito(formData);
+            var boton = "eliminarDelCarrito";
+            eliminarDelCarrito(formData, boton);
         });
 
         // Manejar clic en el botón "Eliminar de Favoritos"
         $(document).on('click', '.eliminarDeFavoritos', function () {
             var formData = $(this).closest('form').serialize();
-            eliminarDeFavoritos(formData);
+            var boton = "eliminarDeFavoritos";
+            eliminarDeFavoritos(formData,boton);
         });
 
         // Manejar clic en el botón "Agregar al Carrito"
         $(document).on('click', '.anadirAlCarrito', function () {
             var formData = $(this).closest('form').serialize();
             var button = $(this);
+            var boton = "anadirAlCarrito";
             var spinner = button.find('.spinner-border');
             var buttonText = button.find('.btn-text');
             buttonText.hide();
             spinner.show();
-            agregarAlCarrito(formData, spinner, buttonText);
+            agregarAlCarrito(formData, spinner, buttonText, boton);
         });
 
         // Manejar clic en el botón "Agregar a Favoritos"
         $(document).on('click', '.anadirAFavoritos', function () {
             var formData = $(this).closest('form').serialize();
             var button = $(this);
+            var boton = "anadirAFavoritos";
             var spinner = button.find('.spinner-border');
             var buttonText = button.find('.btn-text');
             buttonText.hide();
             spinner.show();
-            agregarAFavoritos(formData, spinner, buttonText);
+            agregarAFavoritos(formData, spinner, buttonText, boton);
         });
 
-        function eliminarDelCarrito(formData) {
+        function eliminarDelCarrito(formData, boton) {
             $.ajax({
                 type: 'POST',
-                url: 'MODELO/eliminarDelCarrito.php',
-                data: formData,
+                url: 'index.php',
+                data: formData + '&accion=' + boton,
                 dataType: 'json',
                 success: function (response) {
                     if (response.status === 'success') {
@@ -527,11 +530,11 @@
             });
         }
 
-        function eliminarDeFavoritos(formData) {
+        function eliminarDeFavoritos(formData, boton) {
             $.ajax({
                 type: 'POST',
-                url: 'MODELO/eliminarDeFavs.php',
-                data: formData,
+                url: 'index.php',
+                data: formData + '&accion=' + boton,
                 dataType: 'json',
                 success: function (response) {
                     if (response.status === 'success') {
@@ -547,7 +550,7 @@
             });
         }
 
-        function actualizarCarrito(spinner, buttonText) {
+        function actualizarCarrito() {
             $.ajax({
                 url: 'MODELO/obtenerCarrito.php',
                 type: 'GET',
@@ -556,20 +559,15 @@
                     console.log('Información del carrito actualizada:');
                     $('#divCarrito').html(data);
                     $('#divCarritoResp').html(data);
-                    setTimeout(function() {
-                        spinner.hide();
-                        buttonText.show();
-                    }, 500);
+
                 },
                 error: function() {
                     console.log('Error al obtener la información del carrito.');
-                    spinner.hide();
-                    buttonText.show();
                 }
             });
         }
 
-        function actualizarFavoritos(spinner, buttonText) {
+        function actualizarFavoritos() {
             $.ajax({
                 url: 'MODELO/obtenerFavs.php',
                 type: 'GET',
@@ -578,55 +576,55 @@
                     console.log('Información de favoritos actualizada:');
                     $('#divFavs').html(data);
                     $('#divFavsResp').html(data);
-                    setTimeout(function() {
-                        spinner.hide();
-                        buttonText.show();
-                    }, 500);
                 },
                 error: function() {
                     console.log('Error al obtener la información de favoritos.');
-                    spinner.hide();
-                    buttonText.show();
                 }
             });
         }
 
-        function agregarAlCarrito(formData, spinner, buttonText) {
+        function agregarAlCarrito(formData, spinner, buttonText, boton) {
             $.ajax({
                 type: 'POST',
-                url: 'MODELO/anadirAlCarrito.php',
-                data: formData,
+                url: 'index.php',
+                data: formData + '&accion=' + boton,
                 dataType: 'json',
                 success: function (response) {
                     if (response.status === 'success') {
-                        console.log('Producto agregado al carrito');
-                        actualizarCarrito(spinner, buttonText);
+                        actualizarCarrito();
+                        setTimeout(function() {
+                        spinner.hide();
+                        buttonText.show();
+                    }, 500);
                     } else {
                         console.log('Error: ' + response.message);
                     }
                 },
-                error: function (error) {
-                    console.error('Error:', error);
+                error: function(xhr, status, error) {
+                    console.error('Error en la solicitud AJAX:', error);
                 }
             });
         }
 
-        function agregarAFavoritos(formData, spinner, buttonText) {
+        function agregarAFavoritos(formData, spinner, buttonText, boton) {
             $.ajax({
                 type: 'POST',
-                url: 'MODELO/anadirAFavs.php',
-                data: formData,
+                url: 'index.php',
+                data: formData + '&accion=' + boton,
                 dataType: 'json',
                 success: function (response) {
                     if (response.status === 'success') {
-                        console.log('Producto agregado a favoritos');
-                        actualizarFavoritos(spinner, buttonText);
+                        actualizarFavoritos();
+                        setTimeout(function() {
+                        spinner.hide();
+                        buttonText.show();
+                    }, 500);
                     } else {
                         console.log('Error: ' + response.message);
                     }
                 },
-                error: function (error) {
-                    console.error('Error:', error);
+                error: function(xhr, status, error) {
+                    console.error('Error en la solicitud AJAX:', error);
                 }
             });
         }

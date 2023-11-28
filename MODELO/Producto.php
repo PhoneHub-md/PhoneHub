@@ -4,15 +4,14 @@ class Producto {
     private $titulo;
     private $descripcion;
     private $precio;
-    private $stock;
     private $imagenProducto;
 
-    public function __construct($producto) {
-        $this->idProducto = $producto['idProducto'];
-        $this->titulo = $producto['titulo'];
-        $this->descripcion = $producto['descripcion'];
-        $this->precio = $producto['precio'];
-        $this->imagenProducto = $producto['imagenProducto'];
+    public function __construct($idProducto, $titulo, $descripcion, $precio, $imagenProducto) {
+        $this->idProducto = $idProducto;
+        $this->titulo = $titulo;
+        $this->descripcion = $descripcion;
+        $this->precio = $precio;
+        $this->imagenProducto = $imagenProducto;
     }
 
     public function getIdProducto() {
