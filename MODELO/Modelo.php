@@ -36,7 +36,7 @@ class Modelo{
     public function registroExistente($correo){
         $consultaExistencia = "SELECT * FROM usuario WHERE correo = ?";
         $stmtExistencia = $this->db->prepare($consultaExistencia);
-        $stmtExistencia->bind_param('s', $email);
+        $stmtExistencia->bind_param('s', $correo);
         $stmtExistencia->execute();
         $resultadoExistencia = $stmtExistencia->get_result();
         if ($resultadoExistencia->num_rows > 0) {
