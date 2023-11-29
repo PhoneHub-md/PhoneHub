@@ -89,7 +89,7 @@
                         </div>
                         <div class="offcanvas-body" id="divCarritoResp">
                             <?php
-                                include 'MODELO/obtenerCarrito.php'
+                                include 'VISTA/obtenerCarrito.php'
                             ?>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="offcanvas-body" id="divFavsResp">
                             <?php
-                            include 'MODELO/obtenerFavs.php'
+                            include 'VISTA/obtenerFavs.php'
                             ?>
                         </div>
                     </div>                             <!--FIN ASIDE CARRITO Y FAVORITOS RESPONSIVE (SOLO MODAL)-->
@@ -289,7 +289,7 @@
                     </div>
                     <div class="offcanvas-body" id="divFavs">
                         <?php
-                            include 'MODELO/obtenerFavs.php'
+                            include 'VISTA/obtenerFavs.php'
                         ?>
                     </div>
                 </div>              <!--FIN BOTON Y MODAL FAVORITOS-->
@@ -359,7 +359,7 @@
                     </div>
                     <div class="offcanvas-body" id="divCarrito">
                     <?php
-                       include 'MODELO/obtenerCarrito.php'
+                       include 'VISTA/obtenerCarrito.php'
                         ?>
                     </div>
                 </div>                      <!--FIN BOTON Y MODAL CARRITO-->
@@ -552,7 +552,7 @@
 
         function actualizarCarrito() {
             $.ajax({
-                url: 'MODELO/obtenerCarrito.php',
+                url: 'VISTA/obtenerCarrito.php',
                 type: 'GET',
                 dataType: 'html',
                 success: function(data) {
@@ -569,7 +569,7 @@
 
         function actualizarFavoritos() {
             $.ajax({
-                url: 'MODELO/obtenerFavs.php',
+                url: 'VISTA/obtenerFavs.php',
                 type: 'GET',
                 dataType: 'html',
                 success: function(data) {
