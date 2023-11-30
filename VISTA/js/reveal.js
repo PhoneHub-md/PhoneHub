@@ -16,9 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Agrega un event listener para el evento scroll
     window.addEventListener("scroll", mostrarElementos);
 
-    // Llama a mostrarElementos al cargar la página para mostrar elementos inmediatamente visibles
     mostrarElementos();
 });

@@ -40,9 +40,9 @@ class Modelo{
         $stmtExistencia->execute();
         $resultadoExistencia = $stmtExistencia->get_result();
         if ($resultadoExistencia->num_rows > 0) {
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 

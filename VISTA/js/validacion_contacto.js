@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("miFormulario").addEventListener("submit", function (e) {
-        e.preventDefault(); // Evita el envío automático del formulario
+        e.preventDefault();
         validarFormulario();
     });
 });
@@ -19,13 +19,13 @@ function validarFormulario() {
         agregarMensajeValidacion('Por favor, rellena todos los campos.');
     }
 
-   
+    if (contieneNumeros(nombre) || contieneNumeros(apellido)) {
+        agregarMensajeValidacion('El nombre y el apellido no deben contener números.');
+    }
 
     if (email !== '' && !validarEmail(email)) {
         agregarMensajeValidacion('Por favor, ingresa una dirección de correo electrónico válida.');
     }
-
-    
 
     if (mensajesValidacion.innerHTML === '') {
         mensajesValidacion.innerHTML = '<p>Formulario enviado con éxito</p>';
@@ -35,13 +35,17 @@ function validarFormulario() {
 function agregarMensajeValidacion(mensaje) {
     var mensajesValidacion = document.getElementById('mensajesValidacion_contacto');
     var nuevoMensaje = document.createElement('p');
-    nuevoMensaje.style.color = 'red';
+    nuevoMensaje.style.color = 'white';
     nuevoMensaje.textContent = mensaje;
     mensajesValidacion.appendChild(nuevoMensaje);
 }
 
 function validarEmail(email) {
-    // Utiliza una expresión regular u otra lógica para validar el formato del email
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+function contieneNumeros(texto) {
+    var numerosRegex = /\d/;
+    return numerosRegex.test(texto);
 }

@@ -34,9 +34,9 @@
             </div>
             <?php
                 if(isset($_SESSION['admin'])){
-                    echo '<form method="POST" action="MODELO/anadirProducto.php">
+                    echo '<div">
                             <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modalAnadirProducto">Añadir producto</button>
-                        </form>';
+                        </div>';
                 }
             ?>
             
@@ -105,14 +105,14 @@
                                     <p class="card-text fw-bold"><?php echo $producto->getPrecio(); ?> €</p>
                                 </div>
                             </div>
-                            <form>
+                            <form method="post" action="index.php">
                                 <input type="hidden" name="idProducto" value="<?php echo $producto->getIdProducto(); ?>">
                                 <input type="hidden" name="imagen" value="data:image/jpg;base64,<?php echo base64_encode($producto->getImagenProducto()); ?>">
                                 <input type="hidden" name="titulo" value="<?php echo $producto->getTitulo(); ?>">
                                 <input type="hidden" name="precio" value="<?php echo $producto->getPrecio(); ?>">
                                 <?php
                                 if(isset($_SESSION['admin'])){
-                                    echo '<button type="submit" class="btn btn-danger" name="borrarProducto">
+                                    echo '<button type="submit" class="btn btn-danger" name="eliminarProducto">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                                 <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                                             </svg>
@@ -162,26 +162,26 @@
         </div>
     </div>
     <div class="modal-body">
-        <form id="anadirProducto" class="form-floating" enctype="multipart/form-data" method="post" action="MODELO/anadirProducto.php">
+        <form id="anadirProducto" class="form-floating" enctype="multipart/form-data" method="post" action="index.php">
             <div class="row m-1 p-1">
                 <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="tituloProducto" id="tituloProducto" placeholder="" style="height: 40px;" required>
+                    <input type="text" class="form-control" name="tituloProducto" id="tituloProducto" placeholder="" style="height: 40px;">
                     <label for="tituloProducto">Título</label>
                 </div>
                 <div class="col form-floating p-2">
-                    <input type="text" class="form-control" name="descripcionProducto" id="descripcionProducto" placeholder="" required style="height: 40px;">
+                    <input type="text" class="form-control" name="descripcionProducto" id="descripcionProducto" placeholder="" style="height: 40px;">
                     <label for="descripcionProducto">Descripción</label>
                 </div>
             </div>
             <div class="row m-1 p-1 ">
                 <div class="col form-floating p-2">
-                    <input type="number" class="form-control" name="precioProducto" id="precioProducto" placeholder="" required style="height: 40px;">
+                    <input type="number" class="form-control" name="precioProducto" id="precioProducto" placeholder="" style="height: 40px;">
                     <label for="precioProducto">Precio</label>
                 </div>
             </div>
             <div class="row m-1 p-1 ">
                 <div class="col form-floating p-2">
-                    <input type="file" class="form-control" name="imagenProducto" id="imagenProducto" accept="image/*" required placeholder="" style="height: 40px;">
+                    <input type="file" class="form-control" name="imagenProducto" id="imagenProducto" accept="image/*" placeholder="" style="height: 40px;">
                     <label for="imagenProducto">Imagen</label>
                 </div>
             </div>

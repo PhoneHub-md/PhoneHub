@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("registroForm").addEventListener("submit", function (e) {
-        e.preventDefault(); // Evita el envío automático del formulario
+        e.preventDefault();
         validarRegistro();
     });
 });
@@ -20,22 +20,23 @@ function validarRegistro() {
         agregarMensajeValidacion('Por favor, rellena todos los campos.');
     }
 
-    
+    if (contieneNumeros(nombre) || contieneNumeros(apellido)) {
+        agregarMensajeValidacion('El nombre y el apellido no deben contener números.');
+    }
 
     if (email !== '' && !validarEmail(email)) {
         agregarMensajeValidacion('Por favor, ingresa una dirección de correo electrónico válida.');
+    }
+
+    if (password1 !== '' && !esContrasenaFuerte(password1)) {
+        agregarMensajeValidacion('La contraseña debe tener al menos 8 caracteres, incluir letras mayúsculas, minúsculas, números y caracteres especiales.');
     }
 
     if (password1 !== '' && password2 !== '' && password1 !== password2) {
         agregarMensajeValidacion('Las contraseñas no coinciden.');
     }
 
-   
-
-    // Resto de las validaciones según tus necesidades...
-
     if (mensajesValidacion.innerHTML === '') {
-        // Puedes enviar el formulario aquí si es válido
         document.getElementById("registroForm").submit();
     }
 }
@@ -43,7 +44,7 @@ function validarRegistro() {
 function agregarMensajeValidacion(mensaje) {
     var mensajesValidacion = document.getElementById('mensajesValidacion_registro');
     var nuevoMensaje = document.createElement('p');
-    nuevoMensaje.style.color = 'red';
+    nuevoMensaje.style.color = 'white';
     nuevoMensaje.textContent = mensaje;
     mensajesValidacion.appendChild(nuevoMensaje);
 }
@@ -51,4 +52,25 @@ function agregarMensajeValidacion(mensaje) {
 function validarEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+function esContrasenaFuerte(contrasena) {
+    var longitudMinima = 8;
+    var contieneMayuscula = /[A-Z]/.test(contrasena);
+    var contieneMinuscula = /[a-z]/.test(contrasena);
+    var contieneNumero = /\d/.test(contrasena);
+    var contieneEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(contrasena);
+
+    return (
+        contrasena.length >= longitudMinima &&
+        contieneMayuscula &&
+        contieneMinuscula &&
+        contieneNumero &&
+        contieneEspecial
+    );
+}
+
+function contieneNumeros(texto) {
+    var numerosRegex = /\d/;
+    return numerosRegex.test(texto);
 }

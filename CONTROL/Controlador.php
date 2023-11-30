@@ -3,8 +3,7 @@ require_once('MODELO/Modelo.php');
 
 $modelo  = new Modelo();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['login'])) {
-        echo "Se ha enviado el formulario de login";
+    if (isset($_POST['email']) && isset($_POST['password'])) {
         login();
     }
     if(isset($_POST['logout'])){
@@ -15,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         isset($_POST['email2']) &&
         isset($_POST['password1']) &&
         isset($_POST['password2'])) {
-            echo "Se ha enviado el formulario de registro";
             registro();
     }
     if (isset($_POST['accion'])) {
@@ -26,33 +24,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             isset($_POST['precio']) &&
             isset($_POST['imagen'])
         ) {
-            $productoId = $_POST['idProducto'];
-            $titulo = $_POST['titulo'];
-            $precio = $_POST['precio'];
-            $imagen = $_POST['imagen'];
+            if (!empty($_POST['idProducto']) && !empty($_POST['titulo']) && !empty($_POST['precio']) && !empty($_POST['imagen'])) {
+                $productoId = $_POST['idProducto'];
+                $titulo = $_POST['titulo'];
+                $precio = $_POST['precio'];
+                $imagen = $_POST['imagen'];
 
-            $producto = new Producto($productoId, $titulo, null, $precio, $imagen);
-    
-            if ($_POST['accion']=="anadirAlCarrito") {
-                if (agregarAlCarrito($producto)) {
-                    $response['status'] = 'success';
-                    $response['message'] = 'Producto agregado al carrito';
-                } else {
-                    $response['message'] = 'Error al agregar el producto al carrito';
+                $producto = new Producto($productoId, $titulo, null, $precio, $imagen);
+        
+                if ($_POST['accion']=="anadirAlCarrito") {
+                    if (agregarAlCarrito($producto)) {
+                        $response['status'] = 'success';
+                        $response['message'] = 'Producto agregado al carrito';
+                    } else {
+                        $response['message'] = 'Error al agregar el producto al carrito';
+                    }
                 }
-            }
-            if ($_POST['accion']=="anadirAFavoritos") {
-                if (agregarAFavs($producto)) {
-                    $response['status'] = 'success';
-                    $response['message'] = 'Producto agregado a favoritos';
-                } else {
-                    $response['message'] = 'Error al agregar el producto a favoritos';
+                if ($_POST['accion']=="anadirAFavoritos") {
+                    if (agregarAFavs($producto)) {
+                        $response['status'] = 'success';
+                        $response['message'] = 'Producto agregado a favoritos';
+                    } else {
+                        $response['message'] = 'Error al agregar el producto a favoritos';
+                    }
                 }
             }
         }
         if ( isset($_POST['idProducto'])){
             if ($_POST['accion']=="eliminarDelCarrito") {
-                if (isset($_POST['idProducto'])) {
+                if (!empty($_POST['idProducto'])) {
                     header('Content-Type: application/json');
                     $productoId = $_POST['idProducto'];
                     
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }      
             }
             if ($_POST['accion']=="eliminarDeFavoritos") {
-                if (isset($_POST['idProducto'])) {
+                if (!empty($_POST['idProducto'])) {
                     header('Content-Type: application/json');
                     $productoId = $_POST['idProducto'];
                     
@@ -93,20 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if(isset($_POST['precio']) && $_POST['marca'] && $_POST['orden']){
         header("Location: index.php?tienda&precio=" . $_POST['precio'] . "&marca=" . $_POST['marca'] . "&orden=" . $_POST['orden']);
-        exit;
+        exit();
     }
     if(isset($_POST['buscar'])){
         header("Location: index.php?tienda&buscar=" . $_POST['buscar']);
-        exit;
+        exit();
     }
     if(isset($_POST['pagar'])){
         pagar();
-    }
-    if(isset($_POST['obtenerCarrito'])){
-        obtenerCarrito();
-    }
-    if(isset($_POST['obtenerFavoritos'])){
-        obtenerFavoritos();
     }
 }
 
@@ -123,7 +117,7 @@ function login() {
             exit();
         }
 
-        if ($correo === 'admin' && $contrasena === 'qwerty') {
+        if ($correo === 'Admin' && $contrasena === 'qwerty') {
             $_SESSION['admin'] = $correo;
             $_SESSION['userName'] = $correo;
             header('Location: index.php');
@@ -131,9 +125,8 @@ function login() {
         } else {
             $usuario = $modelo->login($correo);
 
-            if ($usuario) {
+            if ($usuario !== null) {
                 if (password_verify($contrasena, $usuario->getContrasena())) {
-                    echo 'Inicio de sesión exitoso';
                     $_SESSION['idUser'] = $usuario->getIdUsuario();
                     $_SESSION['user'] = $usuario;
                     $_SESSION['userName'] = $usuario->getNombre();
@@ -170,7 +163,7 @@ function login() {
 
 function logout(){
     global $modelo;
-    if (isset($_SESSION['carrito']) || isset($_SESSION['favoritos']) && !isset($_SESSION['admin'])) {
+    if (isset($_SESSION['carrito']) || isset($_SESSION['favoritos']) && isset($_SESSION['idUser'])) {
         $cartData = isset($_SESSION['carrito']) ? serialize($_SESSION['carrito']) : null;
         $favsData = isset($_SESSION['favoritos']) ? serialize($_SESSION['favoritos']) : null;
         $idUsuario = $_SESSION['idUser'];
@@ -179,7 +172,6 @@ function logout(){
     
     }
     session_destroy();
-    
     header('Location: index.php?home');
 }
 
@@ -294,104 +286,32 @@ function agregarAlCarrito($producto) {
     return true;
 }
 
-function obtenerCarrito(){
-    if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])) {
-        $precio = 0;
-        foreach ($_SESSION['carrito'] as $producto) {
-            $precio = $precio + $producto['precio'];
-            echo "<div class='row p-3'>";
-                echo "<div class='col-5'>";
-                    echo "<img style='width:8em' class='img-fluid' src='" . $producto->getImagenProducto() . "'></img>";
-                echo "</div>";
-                echo "<div class='col d-flex flex-column text-center'>";
-                    echo "<span class='fw-semibold p-1'>" . $producto->getTitulo() . "</span>";
-                    echo "<span class='p-1'>" . $producto->getPrecio() . "€</span>";
-                    echo "<form>";
-                        echo "<input type='hidden' name='idProducto' value='" . $producto->getIdProducto() . "'>";
-                        echo "<button type='button' class=' btn btn-danger eliminarDelCarrito m-1' value='eliminarDelCarrito'>
-                                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash3' viewBox='0 0 16 16'>
-                                    <path d='M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5'/>
-                                </svg>
-                              </button>";
-                    echo "</form>";
-                    
-                echo "</div>";
-            echo "</div>";
-            
-        }
-        echo '<div class="row m-3">
-                <div class="col">
-                    <span class=" fs-5 fw-semibold">Total: '. $precio .' € </span>
-                </div>
-            </div>
-            <div class="row m-5">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPago">Ir a pagar</button>
-            </div>';
-    } else {
-        echo "El carrito está vacío.";
-    }
-}
-
-function obtenerFavoritos(){
-    if (isset($_SESSION['favoritos']) && !empty($_SESSION['favoritos'])) {
-   
-        foreach ($_SESSION['favoritos'] as $producto) {
-            
-            echo "<div class='row p-3'>";
-                echo "<div class='col-5'>";
-                    echo "<img style='width:8em' class='img-fluid' src='" . $producto->getImagenProducto() . "'></img>";
-                echo "</div>";
-                echo "<div class='col d-flex flex-column text-center'>";
-                    echo "<span class='fw-semibold p-1'>" . $producto['titulo'] . "</span>";
-                    echo "<span class='p-1'>" . $producto['precio'] . "€</span>";
-                    echo "<form>";
-                        echo "<input type='hidden' name='idProducto' value='" . $producto->getIdProducto() ."'>";
-                        echo "<input type='hidden' name='imagen' value='" . $producto->getImagenProducto() . "'>"; 
-                        echo "<input type='hidden' name='titulo' value='" . $producto->getTitulo() ."'>";
-                        echo "<input type='hidden' name='precio' value='" . $producto->getPrecio() ."'>";
-                        echo "<button type='button' class=' btn btn-danger eliminarDeFavoritos m-1' value='eliminarDeFavoritos'>
-                                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash3 btn-text' viewBox='0 0 16 16'>
-                                    <path d='M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5'/>
-                                </svg>
-                              </button>";
-                        echo "<button type='button' class='btn btn-dark m-1 anadirAlCarrito' value='anadirAlCarrito'>
-                                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-bag btn-text' viewBox='0 0 16 16'>
-                                    <path d='M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z' />
-                                </svg>
-                                <div class='spinner-border spinner-border-sm' role='status' style='display: none;'>
-                                    <span class='visually-hidden'>Loading...</span>
-                                </div>
-                              </button>";
-                    echo "</form>";
-                echo "</div>";
-            echo "</div>";
-        }    
-    }else {
-        echo "No hay productos favoritos.";
-    }
-}
 function agregarProducto() {
     $tituloProducto = trim($_POST['tituloProducto']);
     $descripcionProducto = trim($_POST['descripcionProducto']);
     $precioProducto = trim($_POST['precioProducto']);
     $imagenTmp = $_FILES['imagenProducto']['tmp_name'];
 
-    if (!empty($imagenTmp)) {
-        $imagenProducto = file_get_contents($imagenTmp);
-    } else {
-        $imagenProducto = null;
+    if (!empty($tituloProducto) && !empty($descripcionProducto) && !empty($precioProducto)) {
+        if (!empty($imagenTmp)) {
+            $imagenProducto = file_get_contents($imagenTmp);
+        } else {
+            $imagenProducto = null;
+        }
+        global $modelo;
+        $producto = new Producto(null, $tituloProducto, $descripcionProducto, $precioProducto, $imagenProducto);
+        $modelo->agregarProducto($producto);
     }
-    global $modelo;
-    $producto = new Producto(null, $tituloProducto, $descripcionProducto, $precioProducto, $imagenProducto);
-    $modelo->agregarProducto($producto);
-    header('Location: ../index.php?tienda');
+    header('Location: index.php?tienda');
     exit();
 }
 
 function eliminarProducto(){
     global $modelo;
     $idProducto = $_POST['idProducto'];
-    $modelo->agregarProducto($idProducto);
+    if(!empty($idProducto)){
+        $modelo->borrarProducto($idProducto);
+    }
     header('Location: index.php?tienda');
     exit();
 }

@@ -57,10 +57,6 @@
                         </svg>
                         <span class="fw-light"> +34 722 677 154</span>
                     </span>
-                    
-                   
-                    
-                    
                 </div>
             </div>
         </div>
@@ -90,6 +86,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

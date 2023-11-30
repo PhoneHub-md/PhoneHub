@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function validarPago(){
         
-            var mensajesValidacionPago = document.getElementById('mensajesValidacion_pagar');
-            mensajesValidacionPago.innerHTML = '';
+        var mensajesValidacionPago = document.getElementById('mensajesValidacion_pagar');
+        mensajesValidacionPago.innerHTML = '';
 
         var nombrePago = document.getElementById("nombrePago").value.trim();
         var apellidoPago = document.getElementById("apellidoPago").value.trim();
@@ -22,12 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
             agregarMensajeValidacionPago('Por favor, rellena todos los campos.');
         }
 
-        // Validación del campo Correo
+        if (contieneNumeros(nombrePago) || contieneNumeros(apellidoPago)) {
+            agregarMensajeValidacionPago('El nombre y el apellido no deben contener números.');
+        }
+
         if (email3 !== "" && !validarCorreoElectronico(email3)) {
             agregarMensajeValidacionPago('Dirección de correo no válida');
         }
 
-        // Validación del campo Tarjeta de crédito
         if (tarjeta !== "" && !validarTarjetaCredito(tarjeta)) {
             agregarMensajeValidacionPago('Tarjeta de crédito no válida');
         }
@@ -37,55 +39,56 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (mensajesValidacionPago.innerHTML === '') {
-            // Puedes enviar el formulario aquí si es válido
             document.getElementById("pagoForm").submit();
             alert("Pago realizado con éxito");
         }
     }
  
 
-function agregarMensajeValidacionPago(mensaje) {
-    var mensajesValidacionPago = document.getElementById('mensajesValidacion_pagar');
-    var nuevoMensaje = document.createElement('p');
-    nuevoMensaje.style.color = 'red';
-    nuevoMensaje.textContent = mensaje;
-    mensajesValidacionPago.appendChild(nuevoMensaje);
-}
-
-// Función de validación de correo electrónico
-function validarCorreoElectronico(correo) {
-    // Expresión regular para validar el formato de correo electrónico
-    var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexCorreo.test(correo);
-}
-
-// Función de validación de tarjeta de crédito
-function validarTarjetaCredito(numeroTarjeta) {
-    numeroTarjeta = numeroTarjeta.replace(/\s/g, '');
-
-    if (!/^\d+$/.test(numeroTarjeta)) {
-        return false;
+    function agregarMensajeValidacionPago(mensaje) {
+        var mensajesValidacionPago = document.getElementById('mensajesValidacion_pagar');
+        var nuevoMensaje = document.createElement('p');
+        nuevoMensaje.style.color = 'white';
+        nuevoMensaje.textContent = mensaje;
+        mensajesValidacionPago.appendChild(nuevoMensaje);
     }
 
-    var digitos = numeroTarjeta.split('').map(Number);
-    digitos.reverse();
+    function validarCorreoElectronico(correo) {
+        var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regexCorreo.test(correo);
+    }
 
-    var suma = 0;
+    function validarTarjetaCredito(numeroTarjeta) {
+        numeroTarjeta = numeroTarjeta.replace(/\s/g, '');
 
-    for (var i = 0; i < digitos.length; i++) {
-        var digito = digitos[i];
-
-        if (i % 2 === 1) {
-            digito *= 2;
-
-            if (digito > 9) {
-                digito -= 9;
-            }
+        if (!/^\d+$/.test(numeroTarjeta)) {
+            return false;
         }
 
-        suma += digito;
+        var digitos = numeroTarjeta.split('').map(Number);
+        digitos.reverse();
+
+        var suma = 0;
+
+        for (var i = 0; i < digitos.length; i++) {
+            var digito = digitos[i];
+
+            if (i % 2 === 1) {
+                digito *= 2;
+
+                if (digito > 9) {
+                    digito -= 9;
+                }
+            }
+
+            suma += digito;
+        }
+
+        return suma % 10 === 0;
     }
 
-    return suma % 10 === 0;
-}
+    function contieneNumeros(texto) {
+        var numerosRegex = /\d/;
+        return numerosRegex.test(texto);
+    }
 })

@@ -81,10 +81,6 @@
         </div>
     </div>
     <?php include 'footer.php'; ?>
-    
-
-
-
     <script src="VISTA/js/validacion_contacto.js"></script>
 </body>
 </html>

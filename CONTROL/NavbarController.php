@@ -1,8 +1,6 @@
 <?php
 
 class NavbarController {
-
-
     public function manejarNavbar() {
         if (isset($_GET['home'])) {
             include "VISTA/home.php";

@@ -8,14 +8,9 @@ elements.forEach(element => {
   element.addEventListener("mouseout", nav2);
 });
 
-
-
-
 function nav(e){
-    var boton = e.target;
-    boton.style.color="white";
-    
-    
+  var boton = e.target;
+  boton.style.color="white"; 
 }
 
 function nav2(e){

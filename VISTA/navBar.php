@@ -142,34 +142,35 @@
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="form-floating" method="post" action="index.php">
+                                <form id="loginForm" class="form-floating" method="post" action="index.php">
                                     <div class="row m-1 p-1 ">
                                         <div class="col form-floating p-2">
-                                            <input type="text" class="form-control" id="email" name="email"  autocomplete="email" placeholder="" style="height: 40px;" required>
+                                            <input type="text" class="form-control" id="email" name="email"  autocomplete="email" placeholder="" style="height: 40px;">
                                             <label for="email">Correo</label>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
                                         <div class="col form-floating p-2">
-                                            <input type="password" id="password" name="password" class="form-control" placeholder="" aria-describedby="passwordHelpBlock" required>
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="" aria-describedby="passwordHelpBlock">
                                             <label for="password">Contraseña</label>
                                         </div>
                                     </div>
-                                    <?php
-                                    if (isset($_SESSION['errorLogin'])) {
-                                        echo '<p style="color: red;">' . $_SESSION['errorLogin'] . '</p>';
-                                        unset($_SESSION['errorLogin']);
-                                    }
-                                    ?>
                                     <div class="row mt-4 mb-4">
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button type="submit" name="login" class="btn btn-outline-light shadow-lg fw-semibold">Entrar</button>
+                                                <button type="submit" id="login" name="login" class="btn btn-outline-light shadow-lg fw-semibold">Entrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
                                     </div>
+                                    <?php
+                                    if (isset($_SESSION['errorLogin'])) {
+                                        echo '<p style="color: white;">' . $_SESSION['errorLogin'] . '</p>';
+                                        unset($_SESSION['errorLogin']);
+                                    }
+                                    ?>
+                                    <div id="mensajesValidacion_login" class="div"></div>
                                 </form>
                             </div>
                             <div class="modal-footer ">
@@ -242,21 +243,21 @@
                                             <label for="password2">Repetir contraseña</label>
                                         </div>
                                     </div>
-                                    <?php
-                                    if (isset($_SESSION['errorRegistro'])) {
-                                        echo '<p style="color: red;">' . $_SESSION['errorRegistro'] . '</p>';
-                                        unset($_SESSION['errorRegistro']);
-                                    }
-                                    ?>
                                     <div class="row mt-4 mb-4">
                                         <div class="col"></div>
                                         <div class="col-6 d-flex justify-content-center">
                                             <div class="row w-100">
-                                                <button name="registro" type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Registrar</button>
+                                                <button name="registro" id="registro" type="submit" class="btn btn-outline-light shadow-lg fw-semibold">Registrar</button>
                                             </div>
                                         </div>
                                         <div class="col"></div>
                                     </div>
+                                    <?php
+                                    if (isset($_SESSION['errorRegistro'])) {
+                                        echo '<p style="color: white;">' . $_SESSION['errorRegistro'] . '</p>';
+                                        unset($_SESSION['errorRegistro']);
+                                    }
+                                    ?>
                                     <div id="mensajesValidacion_registro" class="div"></div>
                                 </form>
                             </div>
@@ -463,6 +464,7 @@
 <script src="VISTA/js/validacion_pago.js"></script>
 <script src="VISTA/js/reveal.js"></script>
 <script src="VISTA/js/form_registro.js"></script>
+<script src="VISTA/js/form_login.js"></script>
 <script src="VISTA/js/modal.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="VISTA/js/hover.js"></script>
@@ -471,22 +473,18 @@
 <script>
     $(document).ready(function () {
         
-
-        // Manejar clic en el botón "Eliminar del Carrito"
         $(document).on('click', '.eliminarDelCarrito', function () {
             var formData = $(this).closest('form').serialize();
             var boton = "eliminarDelCarrito";
             eliminarDelCarrito(formData, boton);
         });
 
-        // Manejar clic en el botón "Eliminar de Favoritos"
         $(document).on('click', '.eliminarDeFavoritos', function () {
             var formData = $(this).closest('form').serialize();
             var boton = "eliminarDeFavoritos";
             eliminarDeFavoritos(formData,boton);
         });
 
-        // Manejar clic en el botón "Agregar al Carrito"
         $(document).on('click', '.anadirAlCarrito', function () {
             var formData = $(this).closest('form').serialize();
             var button = $(this);
@@ -498,7 +496,6 @@
             agregarAlCarrito(formData, spinner, buttonText, boton);
         });
 
-        // Manejar clic en el botón "Agregar a Favoritos"
         $(document).on('click', '.anadirAFavoritos', function () {
             var formData = $(this).closest('form').serialize();
             var button = $(this);
