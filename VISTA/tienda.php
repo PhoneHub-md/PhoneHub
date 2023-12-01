@@ -154,7 +154,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-secondary bg-opacity-50 rounded">
     <div class="modal-header d-flex align-items-center justify-content-center">
-        <div class="col-9 d-flex justify-content-end">
+        <div class="col-9 d-flex justify-content-end ms-4">
             <span style="text-shadow: black 0.1em 0.1em 0.2em" class="fs-2 text-white fw-semibold">NUEVO PRODUCTO</span>
         </div>
         <div class="col d-flex justify-content-end">
